@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://classicstylesdayspas.com/sitemap.xml
