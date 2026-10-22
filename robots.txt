@@ -1,3 +1,36 @@
+# Classic Styles Salon & Day Spa — robots.txt
+# Policy: open to all search and AI crawlers (local business, public info).
+
 User-agent: *
 Allow: /
+
+# AI search & retrieval crawlers — explicit allow (these drive AI citations)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# AI training crawlers — allowed (no proprietary content to protect)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://classicstylesdayspas.com/sitemap.xml
