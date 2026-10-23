@@ -199,6 +199,8 @@ nav.main a:hover::after{width:100%}
 .gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.1rem;margin-top:2.4rem}
 .tile{aspect-ratio:4/5;border-radius:var(--rad);border:1.5px dashed #d6c3a6;background:linear-gradient(150deg,#fbf6ee,#f0e4d2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;color:var(--faint);text-align:center;padding:1rem;transition:transform .35s var(--ease),border-color .3s}
 .tile:hover{transform:translateY(-4px);border-color:var(--copper2)}
+.tile.photo{padding:0;border:none;overflow:hidden;position:relative;display:block;margin:0;background:#1c1916}.tile.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}.tile.photo:hover img{transform:scale(1.04)}.tile.photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1rem .9rem;background:linear-gradient(transparent,rgba(20,16,12,.82));display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;text-align:left}.tile.photo .t1{color:#fff}.tile.photo .t2{color:#f3dcc4}.seework{display:inline-block;margin-top:.7rem;font-size:.78rem;font-weight:600;color:var(--copper-text);text-decoration:none;border-bottom:1px solid currentColor}.anchor{display:block;position:relative;top:-90px;visibility:hidden}
+@media (max-width:560px){.gal-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}.tile.photo figcaption{padding:1.6rem .7rem .6rem}.tile .t1{font-size:.9rem}}
 .tile svg{width:32px;height:32px;opacity:.55}
 .tile .t1{font-family:'Fraunces',serif;font-size:1rem;color:var(--ink2)}
 .tile .t2{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
@@ -534,7 +536,7 @@ nav.main>a,.nav-drop>a{padding:.55rem 0}
 <!-- PHOTO SWAP: data-photo-slot="jen" -->
 <article class="tm rv" data-photo-slot="jen"><div class="avatar" role="img" aria-label="Jen, stylist at Classic Styles Salon in New Port Richey, FL">J</div><h3>Jen</h3><span class="role">Stylist</span><p class="tags">Cuts · Color · Styling</p></article>
 <!-- PHOTO SWAP: data-photo-slot="natalie" -->
-<article class="tm rv" data-photo-slot="natalie"><div class="avatar" role="img" aria-label="Natalie, stylist at Classic Styles Salon in New Port Richey, FL">N</div><h3>Natalie</h3><span class="role">Stylist</span><p class="tags">Cuts · Color · Styling</p></article>
+<article class="tm rv" data-photo-slot="natalie"><div class="avatar" role="img" aria-label="Natalie, stylist at Classic Styles Salon in New Port Richey, FL">N</div><h3>Natalie</h3><span class="role">Stylist</span><p class="tags">Color · Vivids · Bridal updos</p><a class="seework" href="#natalie-work">See Natalie’s work →</a></article>
 <!-- PHOTO SWAP: data-photo-slot="kelly" -->
 <article class="tm rv" data-photo-slot="kelly"><div class="avatar" role="img" aria-label="Kelly, nail technician at Classic Styles Salon in New Port Richey, FL">K</div><h3>Kelly</h3><span class="role">Nail Technician</span><p class="tags">Manicures · Pedicures · Nail Care</p></article>
 <!-- PHOTO SWAP: data-photo-slot="aury" -->
@@ -545,17 +547,18 @@ nav.main>a,.nav-drop>a{padding:.55rem 0}
 
 <!-- ============ GALLERY ============ -->
 <section id="gallery" class="alt">
+<span id="natalie-work" class="anchor"></span>
 <div class="wrap">
 <p class="kicker">Our Work</p>
 <h2 class="rv">Fresh from the chair</h2>
-<p class="lead rv">Real client photos are coming soon — these slots are ready for them.</p>
+<p class="lead rv">Real work from our chairs, starting with Natalie. More stylists’ photos coming soon.</p>
 <div class="gal-grid">
-<!-- GALLERY SWAP 1: replace this .tile with <img src="..." alt="Before and after haircut at Classic Styles Salon in New Port Richey, FL"> -->
-<div class="tile rv" role="img" aria-label="Before and after haircut photo at Classic Styles Salon, New Port Richey — photo coming soon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 44 L52 16"/><path d="M20 20 L52 48"/><circle cx="14" cy="50" r="7"/><circle cx="14" cy="14" r="7"/></svg><span class="t1">Before &amp; after</span><span class="t2">Photo coming soon</span></div>
-<!-- GALLERY SWAP 2 -->
-<div class="tile rv" role="img" aria-label="Dimensional hair color photo at Classic Styles Salon, New Port Richey — photo coming soon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 44 L52 16"/><path d="M20 20 L52 48"/><circle cx="14" cy="50" r="7"/><circle cx="14" cy="14" r="7"/></svg><span class="t1">Dimensional color</span><span class="t2">Photo coming soon</span></div>
-<!-- GALLERY SWAP 3 -->
-<div class="tile rv" role="img" aria-label="Bridal updo hairstyle photo at Classic Styles Salon, New Port Richey — photo coming soon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 44 L52 16"/><path d="M20 20 L52 48"/><circle cx="14" cy="50" r="7"/><circle cx="14" cy="14" r="7"/></svg><span class="t1">Bridal updo</span><span class="t2">Photo coming soon</span></div>
+<!-- GALLERY 1: Natalie -->
+<figure class="tile photo rv"><img src="img/natalie-before-after-color.jpg" alt="Before and after: brassy orange hair corrected to dimensional blonde highlights by Natalie at Classic Styles Salon, New Port Richey FL" width="800" height="1000" loading="lazy" decoding="async"><figcaption><span class="t1">Color correction</span><span class="t2">by Natalie</span></figcaption></figure>
+<!-- GALLERY 2: Natalie -->
+<figure class="tile photo rv"><img src="img/natalie-vivid-color.jpg" alt="Vivid rainbow hair color with red, yellow, green and blue sections by Natalie at Classic Styles Salon, New Port Richey FL" width="800" height="1000" loading="lazy" decoding="async"><figcaption><span class="t1">Vivid color</span><span class="t2">by Natalie</span></figcaption></figure>
+<!-- GALLERY 3: Natalie -->
+<figure class="tile photo rv"><img src="img/natalie-bridal-updo.jpg" alt="Braided bridal updo with pearl and crystal pins by Natalie at Classic Styles Salon, New Port Richey FL" width="800" height="1000" loading="lazy" decoding="async"><figcaption><span class="t1">Bridal updo</span><span class="t2">by Natalie</span></figcaption></figure>
 <!-- GALLERY SWAP 4 -->
 <div class="tile rv" role="img" aria-label="Fresh fade haircut photo at Classic Styles Salon, New Port Richey — photo coming soon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 44 L52 16"/><path d="M20 20 L52 48"/><circle cx="14" cy="50" r="7"/><circle cx="14" cy="14" r="7"/></svg><span class="t1">Fresh fade</span><span class="t2">Photo coming soon</span></div>
 <!-- GALLERY SWAP 5 -->
