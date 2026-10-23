@@ -135,14 +135,15 @@
 </script>
 <meta name="theme-color" content="#F1ECE4">
 <link rel="stylesheet" href="/assets/cs.css">
+<link rel="stylesheet" href="/assets/story.css">
 </head>
-<body>
+<body class="story">
 <a class="skip" href="#main">Saltar al contenido principal</a>
 <header class="site">
 <div class="wrap hd">
 <a class="brand" href="/es/" aria-label="Classic Styles Salon and Day Spa, inicio"><img src="/img/logo-mark.png" alt="" width="40" height="57"><span><b>Classic Styles</b><small>Salon &amp; Day Spa</small></span></a>
 <nav class="main" aria-label="Principal">
-<a href="/es/#services">Servicios</a><a href="/es/#work">Nuestro trabajo</a><a href="/es/#team">Estilistas</a><a href="/es/#reviews">Reseñas</a><a href="/es/#faq">Preguntas</a><a href="/es/#visit">Visítenos</a><a href="/" hreflang="en" lang="en">English</a>
+<a href="/es/#services">Servicios</a><a href="/es/#work">Nuestro trabajo</a><a href="/es/#team">Estilistas</a><a href="/es/#reviews">Reseñas</a><a href="/try-on/">Probar un color</a><a href="/es/#faq">Preguntas</a><a href="/es/#visit">Visítenos</a><a href="/" hreflang="en" lang="en">English</a>
 </nav>
 <div class="hd-cta"><a class="btn btn-outline btn-sm" href="tel:+17274874475">Llamar</a><a class="btn btn-solid btn-sm" href="sms:+17274874475?&body=Hola%20Classic%20Styles!%20Quisiera%20hacer%20una%20cita.">Enviar texto para reservar</a></div>
 <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
@@ -154,7 +155,9 @@
 </nav>
 </header>
 <main id="main">
-<section class="masthead" aria-labelledby="h1">
+<section class="dk glow hero-dk" aria-labelledby="h1">
+<video class="bgvid" src="/assets/silk-loop.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+<div class="masthead">
 <div class="wrap">
 <p class="mast" aria-hidden="true"><span class="l1">Classic</span><span class="l2">Styles</span></p>
 <div class="mh-grid">
@@ -170,6 +173,19 @@
 </figure>
 </div>
 </div>
+</div>
+<p class="scroll-cue" aria-hidden="true">Deslice para entrar<i></i></p>
+</section>
+
+<section class="dk walk" id="inside" aria-label="Entre al salón">
+<h2 class="sr-only">Entre al salón</h2>
+<div class="walk-stage">
+<div class="walk-frame"><video muted playsinline preload="auto" poster="/img/walk-in-poster.jpg" aria-label="Entrando por la puerta principal de Classic Styles Salon hacia el piso del salón"><source src="/assets/walk-in-scrub.mp4" type="video/mp4"></video></div>
+<p class="walk-cap c1">Pase adelante.<small>4116 Grand Blvd, New Port Richey</small></p>
+<p class="walk-cap c2">Seis estaciones, lavacabezas y un cuarto de uñas.<small>Luminoso, acogedor y familiar desde hace más de 35 años.</small></p>
+<p class="walk-cap c3">Sin cita, bienvenidos, de martes a sábado.<small>Estacionamiento gratis justo en la puerta.</small></p>
+<div class="walk-end cta-row"><a class="btn btn-solid" href="tel:+17274874475">Llame para reservar</a><a class="btn btn-outline" href="/nail-salon/">Conozca el cuarto de uñas</a></div>
+</div>
 </section>
 
 <section class="sec sec-paper" id="services">
@@ -183,6 +199,20 @@
 </div>
 </section>
 
+<section class="sec" id="find" aria-labelledby="find-h">
+<div class="wrap">
+<div class="finder" id="finder">
+<h2 id="find-h">¿No sabe qué reservar?</h2>
+<p>Con dos toques le indicamos el servicio adecuado, su precio inicial y la forma más rápida de conseguir su cita.</p>
+<div class="f-step on" data-step="1"><p class="f-q">¿Qué le gustaría?</p><div class="f-opts">
+<button type="button" data-pick="cut">Un corte nuevo</button><button type="button" data-pick="color">Color nuevo o mechas</button><button type="button" data-pick="fix">Arreglar un color que no me gusta</button><button type="button" data-pick="curl">Rizos o cuerpo</button><button type="button" data-pick="care">Cabello más sano y suave</button><button type="button" data-pick="nails">Uñas</button><button type="button" data-pick="event">Una boda o evento</button>
+</div></div>
+<div class="f-step" data-step="2"><p class="f-q">¿Cuándo le gustaría venir?</p><div class="f-opts">
+<button type="button" data-when="soon">Esta semana</button><button type="button" data-when="plan">Estoy planeando con tiempo</button></div><button type="button" class="f-back">Empezar de nuevo</button></div>
+<div class="f-step" data-step="3" aria-live="polite"><div class="f-result"></div><button type="button" class="f-back">Empezar de nuevo</button></div>
+</div>
+</div>
+</section>
 <section class="band on-dark" aria-label="Cotización gratis con foto">
 <div class="wrap">
 <h2>¿No sabe qué necesita su cabello? Envíenos una foto por texto.</h2>
@@ -191,40 +221,45 @@
 </div>
 </section>
 
-<section class="sec" id="work"><span id="gallery"></span><span id="natalie-work"></span>
-<div class="wrap">
-<div class="sec-head"><h2>Trabajo real desde nuestras sillas</h2><p>Sin fotos de archivo. Son nuestras clientas y nuestro salón, y pronto verá más trabajo de cada estilista.</p></div>
-<div class="gallery">
-<figure class="g1"><div class="arch"><img src="/img/natalie-bridal-updo.jpg" alt="Recogido de novia con trenzas y pasadores de perlas y cristales, por Natalie en Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Peinado de novia<span>por Natalie</span></figcaption></figure>
-<figure class="g2"><div class="frame"><img src="/img/natalie-vivid-color.jpg" alt="Color fantasía arcoíris con secciones rojas, amarillas, verdes y azules, por Natalie en Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Color fantasía<span>por Natalie</span></figcaption></figure>
-<figure class="g3"><div class="frame"><img src="/img/natalie-before-after-color.jpg" alt="Antes y después: cabello anaranjado corregido a mechas rubias con dimensión, por Natalie en Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Corrección de color, antes y después<span>por Natalie</span></figcaption></figure>
-<figure class="g4"><div class="frame"><img src="/img/salon-shampoo-stations.jpg" alt="Lavacabezas con sillones reclinables negros dentro de Classic Styles Salon, 4116 Grand Blvd, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 62%"></div><figcaption>Dentro del salón<span>Nuestros lavacabezas en Grand Boulevard</span></figcaption></figure>
-</div>
-</div>
+<section class="dk sec" id="work"><span id="gallery"></span><span id="natalie-work"></span>
+<div class="wrap reel-head"><h2>Trabajo real desde nuestras sillas</h2><p class="lead">Sin fotos de archivo. Nuestras clientas, nuestras estilistas y nuestro salón. Deslice para ver más.</p></div>
+<div class="reel-wrap"><div class="reel">
+<div class="reel-intro"><h2>Trabajo real desde nuestras sillas</h2><p class="lead">Sin fotos de archivo. Nuestras clientas, nuestras estilistas y nuestro salón. Siga desplazándose.</p></div>
+<figure><div class="arch"><img src="/img/natalie-bridal-updo.jpg" alt="Recogido de novia con trenzas y pasadores de perlas y cristales, por Natalie en Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Peinado de novia<span>por Natalie</span></figcaption></figure><figure><div class="frame"><img src="/img/natalie-vivid-color.jpg" alt="Color fantasía arcoíris con secciones rojas, amarillas, verdes y azules, por Natalie en Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Color fantasía<span>por Natalie</span></figcaption></figure><figure><div class="frame"><img src="/img/natalie-before-after-color.jpg" alt="Antes y después: cabello anaranjado corregido a mechas rubias con dimensión, por Natalie en Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Corrección de color, antes y después<span>por Natalie</span></figcaption></figure><figure><div class="frame"><img src="/img/stylist-at-work.jpg" alt="Una estilista de Classic Styles cortando un bob rubio a una clienta en su estación, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Un bob de precisión en proceso<span>en la silla</span></figcaption></figure><figure class="wide"><div class="frame"><img src="/img/salon-floor-wide.jpg" alt="El piso de peinado de Classic Styles Salon con sillones y estaciones negras, New Port Richey, FL" width="1600" height="900" loading="lazy" decoding="async"></div><figcaption>El piso de peinado<span>4116 Grand Blvd</span></figcaption></figure><figure><div class="frame"><img src="/img/salon-shampoo-stations.jpg" alt="Lavacabezas con sillones reclinables negros dentro de Classic Styles Salon, New Port Richey, FL" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption>Lavacabezas<span>para relajarse y reclinarse</span></figcaption></figure><figure class="wide"><div class="frame"><img src="/img/salon-floor-color.jpg" alt="Una estilista aplicando papel aluminio para las mechas de una clienta en el luminoso piso de Classic Styles, New Port Richey, FL" width="1600" height="900" loading="lazy" decoding="async"></div><figcaption>Mechas en proceso<span>en un sábado muy movido</span></figcaption></figure>
+</div></div>
+<div class="wrap"><p style="margin-top:2.5rem"><a class="btn btn-outline" href="/try-on/">Pruebe un color en vivo (en inglés)</a></p></div>
 </section>
 
-<section class="sec" id="bodas">
-<div class="wrap">
-<div class="sec-head"><h2>Una mañana de boda, de principio a fin</h2><p>En la boda Tolliver, Miss Tammy llevó el salón a la suite nupcial: una trenza con perlas y flores para la novia y recogidos para las damas. Bodas, quinceañeras y graduaciones, en el salón o a domicilio. Reserve con unas semanas de anticipación. <em>Fotos: Arianna Cromie Photography</em></p></div>
-<div class="gallery">
-<figure class="g1"><div class="arch"><img src="/img/wedding-braid-mirror.jpg" alt="Trenza de novia terminada con perlas y flores rosadas frente a un espejo dorado" width="1200" height="1751" loading="lazy" decoding="async"></div><figcaption>La trenza terminada<span>boda Tolliver</span></figcaption></figure>
-<figure class="g2"><div class="frame"><img src="/img/wedding-braid-start.jpg" alt="Estilista de Classic Styles trenzando el cabello de una novia en la suite nupcial" width="1200" height="1636" loading="lazy" decoding="async"></div><figcaption>Así empieza la trenza<span>a mano</span></figcaption></figure>
-<figure class="g3"><div class="frame"><img src="/img/wedding-reveal.jpg" alt="Novia con vestido de encaje sonriendo a su reflejo, con su trenza de perlas y flores" width="1200" height="1556" loading="lazy" decoding="async" style="object-position:50% 20%"></div><figcaption>El gran momento<span>frente al espejo</span></figcaption></figure>
+<section class="dk glow wed" id="wedding" aria-labelledby="wed-h">
+<div class="wrap wed-grid">
+<div class="wed-copy">
+<h2 id="wed-h">Una mañana de boda, de principio a fin</h2>
+<p>Para la boda de los Tolliver, Miss Tammy llevó el salón a la suite nupcial: una trenza de perlas prendida a mano para la novia, recogidos suaves para las damas de honor, y todas listas a tiempo.</p>
+<p>Bodas, quinceañeras, graduaciones y grupos de novias completos, en el salón o en el lugar del evento. Reserve con unas semanas de anticipación.</p>
+<p class="cta-row"><a class="btn btn-solid" href="sms:+17274874475?&amp;body=Hola%20Classic%20Styles!%20Quisiera%20informaci%C3%B3n%20sobre%20peinados%20para%20bodas.">Escríbanos sobre su fecha</a><a class="btn btn-outline" href="tel:+17274874475">Llamar</a></p>
+<p class="wed-credit">Fotos: Arianna Cromie Photography</p>
 </div>
+<ol class="wed-stack" role="list">
+<li class="wcard"><figure><img src="/img/wedding-braid-start.jpg" alt="Estilista de Classic Styles trenzando el largo cabello rubio de una novia con flores rosadas y perlas en la suite nupcial" width="1200" height="1636" loading="lazy" decoding="async"><figcaption><b>01</b> Empieza la trenza</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-braid-pins.jpg" alt="Estilista prendiendo hilos de perlas en la trenza de una novia antes de su boda" width="1200" height="1711" loading="lazy" decoding="async"><figcaption><b>02</b> Perlas, prendidas una por una</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-bridesmaid.jpg" alt="Estilista arreglando el recogido rizado de una dama de honor en la mañana de la boda" width="1000" height="1779" loading="lazy" decoding="async"><figcaption><b>03</b> Siguen las damas de honor</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-braid-mirror.jpg" alt="Trenza terminada con perlas y flores en una novia, vista de espaldas frente a un espejo dorado en arco" width="1200" height="1751" loading="lazy" decoding="async"><figcaption><b>04</b> La trenza terminada</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-reveal.jpg" alt="Novia con vestido de encaje sonriendo a su reflejo, con la trenza de flores y perlas sobre la espalda" width="1200" height="1556" loading="lazy" decoding="async"><figcaption><b>05</b> La revelación</figcaption></figure></li>
+</ol>
 </div>
 </section>
 
 <section class="sec sec-tint" id="reviews">
 <div class="wrap">
-<div class="sec-head"><div class="score"><b>5.0</b><span>en 49 reseñas de Google, ninguna por debajo de cinco estrellas</span></div>
-<figure class="pull" style="margin:0"><blockquote lang="en">“Miss Tammy is the best! Helped make our wedding day perfect and we are honored that she was a part of our day.”</blockquote><cite>Adam Tolliver</cite></figure></div>
-<p class="rev-note">Reseñas originales en inglés de Google</p>
+<p class="bigquote" lang="en" aria-label="Miss Tammy is the best! Helped make our wedding day perfect and we are honored that she was a part of our day."><span class="w">“Miss</span> <span class="w">Tammy</span> <span class="w">is</span> <span class="w">the</span> <span class="w">best!</span> <span class="w">Helped</span> <span class="w">make</span> <span class="w">our</span> <span class="w">wedding</span> <span class="w">day</span> <span class="w">perfect</span> <span class="w">and</span> <span class="w">we</span> <span class="w">are</span> <span class="w">honored</span> <span class="w">that</span> <span class="w">she</span> <span class="w">was</span> <span class="w">a</span> <span class="w">part</span> <span class="w">of</span> <span class="w">our</span> <span class="w">day.”</span></p>
+<p class="lead" style="margin:0">Adam Tolliver, el día de su boda. Reseña original en inglés de Google.</p>
+<div class="stats"><div><b><span class="count" data-count="35">35</span>+</b><span>años en Grand Boulevard</span></div><div><b><span class="count" data-count="5.0">5.0</span></b><span>calificación promedio en Google</span></div><div><b><span class="count" data-count="49">49</span></b><span>reseñas, todas de cinco estrellas</span></div></div>
 <div class="quotes"><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Tammy is the best! I wasn’t sure what to do with my hair. She assured me that low lights were the way to go and I LOVE the way it turned out!! She took her time on my hair and it shows!!!”</blockquote><cite>Ashley</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“I absolutely love this shop! So friendly! Debbie has been doing my hair for well over 20 years!”</blockquote><cite>Katrina Stiles</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Natalie at Classic Styles is wonderful and you won’t regret making an appointment with her. My entire family sees her and she does a great job with all our hair.”</blockquote><cite>Sharla Kendall-Cronin</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Full service salon. Excellent service and mid range prices. The hair color is superb!! Great staff!”</blockquote><cite>Doris Tobar</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Been going to Tammy for over 10 years. Great stylist and a pleasure to give her our business.”</blockquote><cite>Nick Babz</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Tammy is a great hair stylist and a very friendly person — she listens to everything you want done with your hair.”</blockquote><cite>Kellie Olmino</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Natalie is so good! I’ll definitely go back. She made me feel so comfortable.”</blockquote><cite>Brittany Stoll</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“No one does a more amazing job than owner Tammy!! She has always been a hard worker and dedicated to her customers.”</blockquote><cite>Dee Dee Holtz</cite></figure><figure class="quote"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote lang="en">“Best haircut I ever had. First time there but will not be the last!”</blockquote><cite>Deborah Soellinger</cite></figure></div>
 <div class="cta-row"><a class="btn btn-outline" href="https://www.google.com/maps/place/Classic+Styles/@28.2190077,-82.7228289,17z/data=!3m1!4b1!4m6!3m5!1s0x88c291e8916f6a6b:0xa63c885e7e4ea1c5!8m2!3d28.2190077!4d-82.7228289!16s%2Fg%2F11bx1r3l72" target="_blank" rel="noopener">Lea las 49 en Google</a></div>
 </div>
 </section>
 
-<section class="sec" id="team">
+<section class="sec dk glow" id="team">
 <div class="wrap">
 <div class="sec-head"><h2>Seis sillas, una sola familia</h2><p>Pida a su estilista por nombre cuando llame, o cuéntenos qué le gustaría hacerse y le asignamos la silla adecuada. <strong>Aury habla español</strong> y con gusto la atiende en su idioma. Pronto tendremos fotos de cada una.</p></div>
 <div class="team"><article class="member" id="tammy"><div class="arch" role="img" aria-label="Tammy, dueña y estilista principal en Classic Styles Salon, New Port Richey, FL"><span class="initial" aria-hidden="true">T</span></div><h3>Tammy</h3><span class="role">Dueña y estilista principal</span><p>Más de 35 años detrás de la silla. Cortes, color, permanentes y novias.</p></article><article class="member" id="debbie"><div class="arch" role="img" aria-label="Debbie, estilista en Classic Styles Salon, New Port Richey, FL"><span class="initial" aria-hidden="true">D</span></div><h3>Debbie</h3><span class="role">Estilista</span><p>Cortes, color y permanentes, con clientas que llevan más de 20 años con ella.</p></article><article class="member" id="jen"><div class="arch" role="img" aria-label="Jen, estilista en Classic Styles Salon, New Port Richey, FL"><span class="initial" aria-hidden="true">J</span></div><h3>Jen</h3><span class="role">Estilista</span><p>Cortes, color y peinados.</p></article><article class="member" id="natalie"><div class="arch" role="img" aria-label="Natalie, estilista en Classic Styles Salon, New Port Richey, FL"><span class="initial" aria-hidden="true">N</span></div><h3>Natalie</h3><span class="role">Estilista</span><p>Corrección de color, color fantasía y recogidos de novia.</p><p><a href="/#work">Ver su trabajo</a></p></article><article class="member" id="kelly"><div class="arch" role="img" aria-label="Kelly, técnica de uñas en Classic Styles Salon, New Port Richey, FL"><span class="initial" aria-hidden="true">K</span></div><h3>Kelly</h3><span class="role">Técnica de uñas</span><p>Manicuras, pedicuras y cuidado de uñas.</p></article><article class="member" id="aury"><div class="arch" role="img" aria-label="Aury, estilista en Classic Styles Salon, New Port Richey, FL"><span class="initial" aria-hidden="true">A</span></div><h3>Aury</h3><span class="role">Estilista</span><span class="role" style="font-weight:500">Habla español</span><p>Cortes, color y peinados. Habla español.</p></article></div>
@@ -250,10 +285,11 @@
 </section>
 
 <section class="sec visit on-dark" id="visit">
-<video class="bgvid" data-ambient src="/assets/silk-loop.mp4" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
+<video class="bgvid" data-play-visible src="/assets/silk-loop.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
 <div class="wrap">
 <div class="visit-grid">
 <div>
+<model-viewer class="plaque" src="/assets/plaque.glb" alt="La placa de cobre de la puerta de Classic Styles, grabada con el monograma CS" camera-controls disable-zoom disable-pan auto-rotate auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none" exposure="1.15" shadow-intensity="0" environment-image="neutral" loading="lazy" reveal="auto" camera-orbit="0deg 82deg auto"></model-viewer>
 <h2>Reserve su silla</h2>
 <address>Classic Styles Salon &amp; Day Spa<br>4116 Grand Blvd<br>New Port Richey, FL 34652</address>
 <a class="phone-big" href="tel:+17274874475">(727) 487-4475</a>
@@ -283,6 +319,13 @@
 </footer>
 <div class="mbar"><a href="tel:+17274874475">Llamar</a><a href="sms:+17274874475?&body=Hola%20Classic%20Styles!%20Quisiera%20hacer%20una%20cita.">Texto para reservar</a></div>
 <script src="/assets/cs.js" defer></script>
-<script src="/assets/concierge.js" defer></script>
+<script src="/assets/concierge.js" defer></script><script src="/assets/track.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="/assets/story.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script>document.querySelectorAll('model-viewer.plaque').forEach(function(mv){mv.addEventListener('load',function(){mv.model.materials.forEach(function(m){var p=m.pbrMetallicRoughness;p.setBaseColorFactor([0.70,0.40,0.22,1]);p.setMetallicFactor(1);p.setRoughnessFactor(0.3);});});if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)mv.removeAttribute('auto-rotate');});</script>
 </body>
 </html>

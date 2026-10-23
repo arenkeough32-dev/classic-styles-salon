@@ -86,6 +86,16 @@
       nails:['Manicure or pedicure','by consultation','Relaxing manicures and pedicures with Kelly in our nail room.','/nail-salon/','manicure or pedicure'],
       event:['Bridal or special-occasion updo','by consultation','Weddings, proms and big days, and whole wedding parties are welcome. Book groups a few weeks ahead.','/#work','bridal or event updo']
     };
+    var ES=document.documentElement.lang==='es';
+    if(ES){R={
+      cut:['Corte y peinado','desde $25','Sin cita son bienvenidos de martes a sábado. La mayoría de los cortes toman unos 30 minutos, y los niños son bienvenidos.','/haircuts-styling/','corte'],
+      color:['Color, mechas o balayage','desde $60','Todo servicio de color empieza con una consulta gratis. Traiga una foto del look que le gusta, o pruebe primero un tono en usted misma.','/hair-color-balayage/','cita de color'],
+      fix:['Corrección de color','con consulta','Arreglamos con paciencia los desastres de tinte casero y los tonos anaranjados, por etapas si hace falta. La corrección de Natalie, de anaranjado a rubio, está en nuestra galería.','/hair-color-balayage/','consulta de corrección de color'],
+      curl:['Permanente u onda de cuerpo','con consulta','Permanentes clásicas, ondas de cuerpo y rizos en espiral con estilistas de 35 años de práctica. La mayoría dura de 3 a 6 meses.','/perms/','consulta de permanente'],
+      care:['Tratamiento de hidratación profunda','con consulta','Reparación para el cabello seco, maltratado por el sol o con frizz de Florida. Se agrega fácilmente a cualquier corte o color.','/treatments/','tratamiento'],
+      nails:['Manicura o pedicura','con consulta','Manicuras y pedicuras relajantes con Kelly en nuestro cuarto de uñas.','/nail-salon/','manicura o pedicura'],
+      event:['Recogido de novia o evento','con consulta','Bodas, graduaciones, quinceañeras y grandes días; los grupos de boda son bienvenidos. Reserve los grupos con unas semanas de anticipación.','/#work','recogido para boda o evento']
+    };}
     var pick=null;
     fd.querySelectorAll('[data-pick]').forEach(function(b){ b.addEventListener('click',function(){
       pick=b.getAttribute('data-pick'); fd.querySelectorAll('[data-pick]').forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
@@ -93,12 +103,12 @@
     }); });
     fd.querySelectorAll('[data-when]').forEach(function(b){ b.addEventListener('click',function(){
       var r=R[pick], soon=b.getAttribute('data-when')==='soon';
-      var body=encodeURIComponent("Hi Classic Styles! I'd like to book a "+r[4]+(soon?' this week.':'. When do you have openings?'));
+      var body=encodeURIComponent(ES?('Hola Classic Styles! Quisiera reservar: '+r[4]+(soon?' esta semana.':'. ¿Cuándo tienen espacio?')):("Hi Classic Styles! I'd like to book a "+r[4]+(soon?' this week.':'. When do you have openings?')));
       var out=fd.querySelector('.f-result');
       out.innerHTML='<h3>'+r[0]+'</h3><span class="price">'+r[1]+'</span><p>'+r[2]+'</p>'
-        +(soon?'<p>Walk-ins are welcome Tuesday to Saturday, but a quick call or text guarantees your chair.</p>':'<p>Text us and a stylist will reply between clients with open times.</p>')
-        +'<div class="cta-row"><a class="btn btn-solid" href="sms:+17274874475?&body='+body+'">Text to book this</a><a class="btn btn-outline" href="tel:+17274874475">Call (727) 487-4475</a></div>'
-        +'<p><a class="textlink" href="'+r[3]+'">More about this service</a>'+((pick==='color'||pick==='fix')?' &nbsp; <a class="textlink" href="/try-on/">Try a color on yourself</a>':'')+'</p>';
+        +(ES?(soon?'<p>Recibimos sin cita de martes a sábado, pero una llamada o un texto rápido le asegura su silla.</p>':'<p>Envíenos un texto y una estilista le responde entre clientas con los horarios disponibles.</p>'):(soon?'<p>Walk-ins are welcome Tuesday to Saturday, but a quick call or text guarantees your chair.</p>':'<p>Text us and a stylist will reply between clients with open times.</p>'))
+        +'<div class="cta-row"><a class="btn btn-solid" href="sms:+17274874475?&body='+body+'">'+(ES?'Enviar texto para reservar':'Text to book this')+'</a><a class="btn btn-outline" href="tel:+17274874475">'+(ES?'Llamar al':'Call')+' (727) 487-4475</a></div>'
+        +'<p><a class="textlink" href="'+r[3]+'">'+(ES?'Más sobre este servicio (en inglés)':'More about this service')+'</a>'+((pick==='color'||pick==='fix')?' &nbsp; <a class="textlink" href="/try-on/">'+(ES?'Pruebe un color (en inglés)':'Try a color on yourself')+'</a>':'')+'</p>';
       fd.querySelector('[data-step="2"]').classList.remove('on'); fd.querySelector('[data-step="3"]').classList.add('on'); out.querySelector('h3').setAttribute('tabindex','-1'); out.querySelector('h3').focus();
     }); });
     fd.querySelectorAll('.f-back').forEach(function(b){ b.addEventListener('click',function(){ fd.querySelectorAll('.f-step').forEach(function(s){ s.classList.remove('on'); }); fd.querySelector('[data-step="1"]').classList.add('on'); }); });
