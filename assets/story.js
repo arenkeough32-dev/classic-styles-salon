@@ -99,3 +99,14 @@
   window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
   }
 })();
+/* wedding stack: each card sinks back as the next one slides over it */
+(function(){
+  var cards = document.querySelectorAll('.wcard');
+  cards.forEach(function(c, i){ c.style.setProperty('--i', i); });
+  if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  cards.forEach(function(c, i){
+    var next = cards[i + 1]; if (!next) return;
+    gsap.to(c.querySelector('figure'), { scale: 0.9, filter: 'brightness(.55)', ease: 'none',
+      scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 20%', scrub: true } });
+  });
+})();

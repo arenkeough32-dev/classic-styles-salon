@@ -115,3 +115,25 @@ body.story main>section:not(.dk){background:radial-gradient(80% 60% at 100% 0%,r
   .walk-cap{bottom:20%!important}
   .walk-end{bottom:5%;display:flex;gap:.6rem;flex-wrap:nowrap;white-space:nowrap}
 }
+
+/* wedding chapter: sticky card stack */
+.wed-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+.wed-copy{position:sticky;top:18vh}
+.wed-copy h2{font-size:clamp(2.4rem,4.6vw,4.2rem)}
+.wed-credit{font:italic 400 .95rem/1.4 var(--serif);color:#A69686!important;margin-top:1.6rem}
+.wed-stack{list-style:none;margin:0;padding:0}
+.wcard{position:sticky;top:calc(12vh + var(--i,0) * 1.4rem);margin-bottom:22vh;transform-origin:50% 0}
+.wcard:last-child{margin-bottom:0}
+.wcard figure{margin:0;border-radius:999px 999px 4px 4px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.55);outline:1px solid rgba(200,147,106,.35);outline-offset:8px;background:#1B1410;position:relative}
+.wcard:nth-child(even) figure{border-radius:4px}
+.wcard img{display:block;width:100%;height:min(76svh,780px);object-fit:cover}
+.wcard figcaption{position:absolute;left:0;right:0;bottom:0;padding:3rem 1.4rem 1.1rem;background:linear-gradient(transparent,rgba(23,17,13,.85));font:italic 400 1.25rem/1.2 var(--serif);color:var(--cream)}
+.wcard figcaption b{font:500 .8rem/1 var(--sans);letter-spacing:.18em;color:var(--copper-lt);margin-right:.7rem;font-style:normal}
+@media(max-width:860px){
+  .wed-grid{grid-template-columns:1fr}
+  .wed-copy{position:static}
+  .wcard{top:calc(76px + var(--i,0) * .9rem);margin-bottom:14vh}
+  .wcard img{height:min(68svh,620px)}
+}
+@media (prefers-reduced-motion:reduce){.wcard,.wed-copy{position:static}.wcard{margin-bottom:2rem}}
+.wcard:last-child figure{border-radius:4px}.wcard:last-child img{object-position:50% 20%}
