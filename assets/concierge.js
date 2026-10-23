@@ -2,6 +2,8 @@
    No AI service, no cookies, no data leaves the page. */
 (function(){
   var ES = (document.documentElement.lang || '').indexOf('es') === 0;
+  var AI_ENDPOINT = ''; // set to the Cloudflare Worker URL to switch on AI answers
+  var hist = [];
   var TEL = 'tel:+17274874475';
   var SMS = 'sms:+17274874475?&body=' + encodeURIComponent(ES ? 'Hola Classic Styles! Quisiera hacer una cita.' : "Hi Classic Styles! I'd like to book an appointment.");
   var T = ES ? {
@@ -66,9 +68,16 @@
   var log = box.querySelector('.cq-log'), chips = box.querySelector('.cq-chips'), input = box.querySelector('input');
   function say(text, who){ var m = document.createElement('div'); m.className = 'cq-m ' + who; m.textContent = text; log.appendChild(m); log.scrollTop = log.scrollHeight; }
   function answer(q){
-    say(q, 'u');
-    for (var i = 0; i < KB.length; i++) if (KB[i][0].test(q)) { setTimeout(function(a){ return function(){ say(a, 'b'); }; }(KB[i][1]), 250); return; }
-    setTimeout(function(){ say(T.fallback, 'b'); }, 250);
+    say(q, 'u'); hist.push({ role: 'user', content: q });
+    var done = function(a){ hist.push({ role: 'assistant', content: a }); say(a, 'b'); };
+    for (var i = 0; i < KB.length; i++) if (KB[i][0].test(q) && (!AI_ENDPOINT || q.length < 60)) { setTimeout(function(a){ return function(){ done(a); }; }(KB[i][1]), 250); return; }
+    if (!AI_ENDPOINT || !window.fetch) { setTimeout(function(){ done(T.fallback); }, 250); return; }
+    var dots = document.createElement('div'); dots.className = 'cq-m b'; dots.textContent = '…'; log.appendChild(dots); log.scrollTop = log.scrollHeight;
+    var ctl = window.AbortController ? new AbortController() : null; var to = setTimeout(function(){ if (ctl) ctl.abort(); }, 12000);
+    fetch(AI_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: hist.slice(-8) }), signal: ctl ? ctl.signal : undefined })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ clearTimeout(to); dots.remove(); done(j && j.reply ? j.reply : T.fallback); })
+      .catch(function(){ clearTimeout(to); dots.remove(); done(T.fallback); });
   }
   KB.slice(0, 6).forEach(function(k){ var c = document.createElement('button'); c.type = 'button'; c.textContent = k[2]; c.onclick = function(){ answer(k[2]); }; chips.appendChild(c); });
   var greeted = false;
