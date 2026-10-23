@@ -19,7 +19,7 @@
 
   // Depth: the hero arch drifts slower than the page (desktop, motion allowed only)
   var art=document.querySelector('.mh-art');
-  if(art && !reduce && window.matchMedia('(min-width: 861px) and (hover: hover)').matches){
+  if(art && !document.body.classList.contains('story') && !reduce && window.matchMedia('(min-width: 861px) and (hover: hover)').matches){
     var ticking=false;
     window.addEventListener('scroll',function(){
       if(ticking) return; ticking=true;
@@ -39,7 +39,7 @@
 
   // 1. masthead depth: wordmark drifts slower than the page, photo faster (desktop)
   var mast=document.querySelector('.mast');
-  if(mast && !reduce && window.innerWidth>860){
+  if(mast && !document.body.classList.contains('story') && !reduce && window.innerWidth>860){
     var t=false; window.addEventListener('scroll',function(){ if(t) return; t=true; requestAnimationFrame(function(){
       var s=Math.min(window.scrollY,window.innerHeight); mast.style.transform='translate3d(0,'+(s*0.18).toFixed(1)+'px,0)'; t=false; }); },{passive:true});
   }
