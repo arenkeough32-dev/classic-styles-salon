@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /assets/print/
 
 # AI search & retrieval crawlers — explicit allow (these drive AI citations)
 User-agent: OAI-SearchBot
@@ -34,6 +35,3 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://classicstylesdayspas.com/sitemap.xml
-
-User-agent: *
-Disallow: /assets/print/
