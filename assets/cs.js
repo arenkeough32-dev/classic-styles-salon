@@ -114,3 +114,14 @@
     fd.querySelectorAll('.f-back').forEach(function(b){ b.addEventListener('click',function(){ fd.querySelectorAll('.f-step').forEach(function(s){ s.classList.remove('on'); }); fd.querySelector('[data-step="1"]').classList.add('on'); }); });
   }
 })();
+/* before/after compare slider */
+document.querySelectorAll('.compare').forEach(function(c){
+  var r=c.querySelector('input[type=range]'); if(!r) return;
+  var set=function(){ c.style.setProperty('--pos', r.value + '%'); };
+  r.addEventListener('input', set); set();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect();
+      var t0=null; function step(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/1600); r.value = 50 + Math.sin(p*Math.PI*2)*28*(1-p); set(); if(p<1) requestAnimationFrame(step); } requestAnimationFrame(step); }); }, {threshold:.5});
+    io.observe(c);
+  }
+});
