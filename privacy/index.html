@@ -164,6 +164,8 @@ nav.main>a,.nav-drop>a{padding:.55rem 0}
 .floaty{animation:floaty 7s ease-in-out infinite alternate}
 @keyframes floaty{from{transform:translateY(-6px) rotate(-2deg)}to{transform:translateY(6px) rotate(2deg)}}
 @media(prefers-reduced-motion:reduce){.rv,.js .rv{opacity:1!important;transform:none!important}}
+
+/* mobile overflow guard */html,body{overflow-x:clip;max-width:100%}.visit-grid>*{min-width:0}@media(max-width:960px){.mapwrap{aspect-ratio:auto;min-height:0;height:320px}}
 </style>
 </head>
 <body id="top">
