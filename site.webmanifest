@@ -1,0 +1,15 @@
+{
+  "name": "Classic Styles Salon & Day Spa",
+  "short_name": "Classic Styles",
+  "description": "Family-owned hair salon and day spa in New Port Richey, FL.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "lang": "en-US",
+  "background_color": "#F1ECE4",
+  "theme_color": "#F1ECE4",
+  "icons": [
+    {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"},
+    {"src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}
