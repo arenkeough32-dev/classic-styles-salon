@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>document.documentElement.classList.add("js")</script>
+<title>Try a Hair Color Live | Classic Styles Salon, New Port Richey FL</title>
+<meta name="description" content="Try copper, blonde, burgundy or rose gold on yourself with a live mirror, right on your phone. Private, free, then book your color at Classic Styles.">
+<link rel="canonical" href="https://classicstylesdayspas.com/try-on/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1ECE4">
+<link rel="stylesheet" href="/assets/cs.css">
+<style>
+.try-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--gut);align-items:start}
+.try-stage{max-width:26rem;width:100%;margin:0 auto}
+.try-stage .arch{aspect-ratio:3/4;background:var(--ink)}
+.try-stage canvas{display:block;width:100%;height:100%;object-fit:cover}
+.try-idle{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem 22% 0;color:var(--paper);font:italic 400 1.25rem/1.35 var(--serif)}
+.try-idle[hidden]{display:none}
+.try-video{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.try-panel h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+.try-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin:1rem 0 .4rem}
+.try-actions .btn[hidden]{display:none}
+.try-file{position:absolute;width:1px;height:1px;opacity:0}
+.try-file:focus-visible+label{outline:2px solid var(--copper);outline-offset:3px}
+.try-status{min-height:1.6rem;margin:.4rem 0 0;color:var(--ink-2);font-size:.98rem}
+.try-status[data-kind="warn"]{color:var(--copper)}
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.2rem,1fr));gap:.5rem;margin:.6rem 0 1.2rem}
+.sw{display:flex;align-items:center;gap:.55rem;min-height:2.9rem;padding:.35rem .7rem .35rem .4rem;background:var(--paper);border:1px solid rgba(35,27,22,.2);border-radius:2px;font:400 .92rem/1.15 var(--sans);color:var(--ink);cursor:pointer;text-align:left}
+.sw i{flex:none;width:1.7rem;height:1.7rem;border-radius:50%;border:1px solid rgba(35,27,22,.25)}
+.sw[aria-pressed="true"]{border-color:var(--copper);box-shadow:inset 0 0 0 1px var(--copper)}
+.try-range{display:flex;align-items:center;gap:.9rem;margin:.4rem 0 1.2rem}
+.try-range input{flex:1;min-width:0;accent-color:var(--copper)}
+.try-range output{min-width:3ch;color:var(--ink-2)}
+.try-label{display:block;font:500 1rem/1.3 var(--sans);margin:0}
+.try-private{padding:.9rem 1.1rem;background:var(--paper);border-left:2px solid var(--copper);margin:1.2rem 0;font-size:.98rem}
+.try-fine{color:var(--muted);font-size:.95rem;font-style:italic;max-width:26rem;margin:1.2rem auto 0}
+.try-note{padding:.8rem 1rem;background:var(--mist);margin-top:.6rem}
+.try-note[hidden]{display:none}
+@media(max-width:860px){.try-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<div class="wrap hd">
+<a class="brand" href="/" aria-label="Classic Styles Salon and Day Spa, home"><img src="/img/logo-mark.png" alt="" width="40" height="57"><span><b>Classic Styles</b><small>Salon &amp; Day Spa</small></span></a>
+<nav class="main" aria-label="Primary">
+<a href="/#services">Services</a><a href="/#work">Our work</a><a href="/#team">Stylists</a><a href="/#reviews">Reviews</a><a href="/try-on/" aria-current="page">Try a color</a><a href="/#visit">Visit</a><a href="/es/" hreflang="es" lang="es">Español</a>
+</nav>
+<div class="hd-cta"><a class="btn btn-outline btn-sm" href="tel:+17274874475">Call</a><a class="btn btn-solid btn-sm" href="sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
+<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+</div>
+<nav class="mmenu" id="mmenu" aria-label="Mobile">
+<a href="/#services">Services</a><a class="sub" href="/haircuts-styling/">Haircuts & styling</a><a class="sub" href="/hair-color-balayage/">Color & balayage</a><a class="sub" href="/treatments/">Treatments</a><a class="sub" href="/perms/">Perms</a><a class="sub" href="/nail-salon/">Nails & pedicures</a>
+<a href="/#work">Our work</a><a href="/#team">Stylists</a><a href="/#reviews">Reviews</a><a href="/try-on/">Try a color</a><a href="/questions/">Questions</a><a href="/#visit">Visit</a><a href="/es/" hreflang="es" lang="es">Español</a>
+<div class="cta-row"><a class="btn btn-solid" href="tel:+17274874475">Call (727) 487-4475</a><a class="btn btn-outline" href="sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
+</nav>
+</header>
+<main id="main">
+<section class="page-hero"><div class="wrap"><nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a><span class="sep">/</span><span>Try a color</span></nav>
+<h1>Try a new color before you book.</h1>
+<p class="sub">Turn on the mirror, pick a shade, and see how it sits with your face and your skin. When something feels right, save it and send it to us. We will tell you honestly what it takes to get there.</p></div></section>
+
+<section class="sec sec-paper" aria-labelledby="mirror-h"><div class="wrap">
+<div class="try-grid">
+<div>
+<div class="try-stage"><div class="arch arch-line"><canvas id="tryCanvas" width="480" height="640" role="img" aria-label="Live mirror showing your hair in the selected color"></canvas><p class="try-idle" id="tryIdle">Your mirror will appear here.</p></div>
+<video id="tryVideo" class="try-video" playsinline muted aria-hidden="true"></video></div>
+<p class="try-fine">A preview, not a promise. Your stylist will tell you what your hair can really do in a free consult.</p>
+</div>
+<div class="try-panel">
+<h2 id="mirror-h">The color mirror</h2>
+<div class="try-actions">
+<button type="button" class="btn btn-solid" id="tryStart">Start the mirror</button>
+<button type="button" class="btn btn-outline" id="tryStop" hidden>Turn camera off</button>
+<input type="file" id="tryFile" class="try-file" accept="image/*"><label class="btn btn-outline" for="tryFile">Upload a photo instead</label>
+</div>
+<p class="try-status" id="tryStatus" role="status" aria-live="polite"></p>
+<p class="try-label" id="swl">Choose a color</p>
+<div class="sws" id="trySwatches" role="group" aria-labelledby="swl"><button type="button" class="sw" data-color="copper" aria-pressed="true" aria-label="Copper" title="Copper"><i style="background:#B86230"></i><span>Copper</span></button><button type="button" class="sw" data-color="honey" aria-pressed="false" aria-label="Honey blonde" title="Honey blonde"><i style="background:#D6A454"></i><span>Honey blonde</span></button><button type="button" class="sw" data-color="ash" aria-pressed="false" aria-label="Ash blonde" title="Ash blonde"><i style="background:#B2AAA0"></i><span>Ash blonde</span></button><button type="button" class="sw" data-color="chocolate" aria-pressed="false" aria-label="Chocolate brown" title="Chocolate brown"><i style="background:#4A2A1C"></i><span>Chocolate brown</span></button><button type="button" class="sw" data-color="burgundy" aria-pressed="false" aria-label="Burgundy" title="Burgundy"><i style="background:#6E162E"></i><span>Burgundy</span></button><button type="button" class="sw" data-color="rose" aria-pressed="false" aria-label="Rose gold" title="Rose gold"><i style="background:#CE8280"></i><span>Rose gold</span></button><button type="button" class="sw" data-color="rainbow" aria-pressed="false" aria-label="Vivid rainbow" title="Vivid rainbow"><i style="background:linear-gradient(180deg,#E23C46,#F09632,#F0D246,#46BE6E,#3C82DC,#8C5AD2)"></i><span>Vivid rainbow</span></button></div>
+<div class="try-range"><label class="try-label" for="tryStrength">Strength</label><input type="range" id="tryStrength" min="15" max="100" value="60"><output id="tryStrengthOut" for="tryStrength">60%</output></div>
+<div class="try-actions">
+<button type="button" class="btn btn-solid" id="trySave" disabled>Save this look</button>
+<a class="btn btn-outline" href="sms:+17274874475?&body=Hi!%20Here%27s%20a%20photo%20of%20my%20hair%20%E2%80%94%20what%20would%20it%20take%20to%20get%3A">Text us this look</a>
+<a class="btn btn-outline" href="tel:+17274874475">Call</a>
+</div>
+<p class="try-note" id="tryNote" hidden>Saved. Now text it to <a href="sms:+17274874475?&body=Hi!%20Here%27s%20a%20photo%20of%20my%20hair%20%E2%80%94%20what%20would%20it%20take%20to%20get%3A">(727) 487-4475</a>.</p>
+<p class="try-private">Your camera stays on your phone. Nothing is uploaded or saved by us.</p>
+<noscript><p>This mirror needs JavaScript. You can always text us a photo at (727) 487-4475.</p></noscript>
+</div>
+</div>
+</div></section>
+
+<section class="sec" id="book"><div class="wrap"><div class="prose">
+<h2>How to book this look</h2>
+<p>Save your favorite, then text it to us or call the salon. We will look at your hair, tell you whether it takes one visit or a few, and give you a price before we start. The first consult is free.</p>
+<div class="cta-row"><a class="btn btn-solid" href="tel:+17274874475">Call (727) 487-4475</a><a class="btn btn-outline" href="sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
+<p style="margin-top:1.6rem"><a class="textlink" href="/hair-color-balayage/">See our color and balayage work</a></p>
+</div></div></section>
+</main>
+<footer>
+<div class="wrap">
+<p class="ft-mark">Classic Styles</p>
+<div class="ft-grid">
+<div><h3>Visit</h3><p>4116 Grand Blvd<br>New Port Richey, FL 34652<br><a href="tel:+17274874475">(727) 487-4475</a></p><p>Serving New Port Richey, Holiday, Hudson, Trinity and Port Richey. Free parking beside the building.</p></div>
+<div><h3>Hours</h3><p>Tuesday to Friday, 9 am to 5 pm<br>Saturday, 9 am to 3 pm<br>Closed Sunday and Monday</p></div>
+<div><h3>Explore</h3><nav aria-label="Footer"><a href="/haircuts-styling/">Haircuts & styling</a><a href="/hair-color-balayage/">Color & balayage</a><a href="/treatments/">Treatments</a><a href="/perms/">Perms</a><a href="/nail-salon/">Nails & pedicures</a><a href="/try-on/">Try a color live</a><a href="/questions/">Hair questions</a><a href="/es/" hreflang="es" lang="es">En español</a><a href="/review/">Leave us a review</a><a href="https://www.google.com/maps/place/Classic+Styles/@28.2190077,-82.7228289,17z/data=!3m1!4b1!4m6!3m5!1s0x88c291e8916f6a6b:0xa63c885e7e4ea1c5!8m2!3d28.2190077!4d-82.7228289!16s%2Fg%2F11bx1r3l72" target="_blank" rel="noopener">Google reviews</a><a href="/privacy/">Privacy</a></nav></div>
+</div>
+<p class="fine">&copy; <span id="yr">2026</span> Classic Styles Salon &amp; Day Spa. Family-owned and women-owned in New Port Richey, Florida.</p>
+</div>
+</footer>
+<div class="mbar"><a href="tel:+17274874475">Call</a><a href="sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
+<script src="/assets/cs.js" defer></script>
+<script src="/assets/concierge.js" defer></script>
+<script type="module" src="/assets/tryon.js"></script>
+</body>
+</html>
