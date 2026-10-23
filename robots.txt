@@ -34,3 +34,6 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://classicstylesdayspas.com/sitemap.xml
+
+User-agent: *
+Disallow: /assets/print/
