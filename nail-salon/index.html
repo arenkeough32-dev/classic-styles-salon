@@ -232,6 +232,20 @@ nav.main>a,.nav-drop>a{padding:.55rem 0}
 @keyframes floaty{from{transform:translateY(-6px) rotate(-2deg)}to{transform:translateY(6px) rotate(2deg)}}
 @media(prefers-reduced-motion:reduce){.rv,.js .rv{opacity:1!important;transform:none!important}}
 
+/* depth pass */
+:root{
+--sh-1:0 1px 2px rgba(36,29,24,.05),0 4px 12px rgba(36,29,24,.05);
+--sh-2:0 2px 4px rgba(36,29,24,.04),0 10px 26px rgba(36,29,24,.08);
+--sh-3:0 4px 10px rgba(36,29,24,.05),0 22px 44px rgba(36,29,24,.12);
+}
+.tm,.tile,.work,.svc-card,.rev-card,.why{box-shadow:var(--sh-1)}
+.tile.photo,.mapwrap{box-shadow:var(--sh-2)}
+.alt{box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 22px 30px -26px rgba(36,29,24,.14)}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+.js .tm,.js .svc-card,.js .rev-card,.js .why,.js .work,.js .tile.photo{transition:opacity .9s var(--ease),transform .9s var(--ease),translate .5s var(--ease),box-shadow .5s var(--ease)}
+.tm:hover,.svc-card:hover,.rev-card:hover,.why:hover,.work:hover,.tile.photo:hover{translate:0 -4px;box-shadow:var(--sh-3);transform:none}
+.tile:hover{transform:none;translate:0 -4px;box-shadow:var(--sh-2)}
+}
 /* mobile overflow guard */html,body{overflow-x:clip;max-width:100%}.visit-grid>*{min-width:0}@media(max-width:960px){.mapwrap{aspect-ratio:auto;min-height:0;height:320px}}
 </style>
 </head>
