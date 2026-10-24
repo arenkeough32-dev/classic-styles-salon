@@ -59,6 +59,8 @@
 .try-fine{color:var(--muted);font-size:.95rem;font-style:italic;max-width:26rem;margin:1.2rem auto 0}
 .try-note{padding:.8rem 1rem;background:var(--mist);margin-top:.6rem}
 .try-note[hidden]{display:none}
+.try-cmp{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.try-cmp[aria-pressed="true"]{border-color:var(--copper);color:var(--copper)}
 @media(max-width:860px){.try-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -101,8 +103,9 @@
 <p class="try-status" id="tryStatus" role="status" aria-live="polite"></p>
 <p class="try-label" id="swl">Choose a color</p>
 <div class="sws" id="trySwatches" role="group" aria-labelledby="swl"><button type="button" class="sw" data-color="copper" aria-pressed="true" aria-label="Copper" title="Copper"><i style="background:#B86230"></i><span>Copper</span></button><button type="button" class="sw" data-color="honey" aria-pressed="false" aria-label="Honey blonde" title="Honey blonde"><i style="background:#D6A454"></i><span>Honey blonde</span></button><button type="button" class="sw" data-color="ash" aria-pressed="false" aria-label="Ash blonde" title="Ash blonde"><i style="background:#B2AAA0"></i><span>Ash blonde</span></button><button type="button" class="sw" data-color="chocolate" aria-pressed="false" aria-label="Chocolate brown" title="Chocolate brown"><i style="background:#4A2A1C"></i><span>Chocolate brown</span></button><button type="button" class="sw" data-color="burgundy" aria-pressed="false" aria-label="Burgundy" title="Burgundy"><i style="background:#6E162E"></i><span>Burgundy</span></button><button type="button" class="sw" data-color="rose" aria-pressed="false" aria-label="Rose gold" title="Rose gold"><i style="background:#CE8280"></i><span>Rose gold</span></button><button type="button" class="sw" data-color="rainbow" aria-pressed="false" aria-label="Vivid rainbow" title="Vivid rainbow"><i style="background:linear-gradient(180deg,#E23C46,#F09632,#F0D246,#46BE6E,#3C82DC,#8C5AD2)"></i><span>Vivid rainbow</span></button></div>
-<div class="try-range"><label class="try-label" for="tryStrength">Strength</label><input type="range" id="tryStrength" min="15" max="100" value="60"><output id="tryStrengthOut" for="tryStrength">60%</output></div>
+<div class="try-range"><label class="try-label" for="tryStrength">Strength</label><input type="range" id="tryStrength" min="15" max="100" value="75"><output id="tryStrengthOut" for="tryStrength">75%</output></div>
 <div class="try-actions">
+<button type="button" class="btn btn-outline try-cmp" id="tryCompare" aria-pressed="false" disabled>Hold to see before</button>
 <button type="button" class="btn btn-solid" id="trySave" disabled>Save this look</button>
 <a class="btn btn-outline" href="sms:+17274874475?&body=Hi!%20Here%27s%20a%20photo%20of%20my%20hair%20%E2%80%94%20what%20would%20it%20take%20to%20get%3A">Text us this look</a>
 <a class="btn btn-outline" href="tel:+17274874475">Call</a>
@@ -136,6 +139,6 @@
 <div class="mbar"><a href="tel:+17274874475">Call</a><a href="sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
 <script src="/assets/cs.js" defer></script>
 <script src="/assets/concierge.js" defer></script><script src="/assets/track.js" defer></script>
-<script type="module" src="/assets/tryon.js"></script>
+<script type="module" src="/assets/tryon.js?v=3"></script>
 </body>
 </html>
