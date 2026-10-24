@@ -21,7 +21,7 @@
     [/hora|abre|cierra|domingo|lunes|s[aá]bado/i,'Martes a viernes de 9:00 am a 5:00 pm, y sábado de 9:00 am a 3:00 pm. Domingo y lunes cerrado.','¿Horario?'],
     [/precio|cu[aá]nto|cuesta|corte/i,'Los cortes empiezan en $25 y el color en $60. Los demás servicios se cotizan en una consulta rápida y gratis.','¿Precios?'],
     [/sin cita|walk|llegar/i,'Sí, aceptamos clientes sin cita de martes a sábado. Para asegurar su silla, llame o envíe un texto antes.','¿Sin cita?'],
-    [/estacion|parqu|parking/i,'Estacionamiento al costado del salón, en 4116 Grand Blvd.','¿Estacionamiento?'],
+    [/estacion|parqu|parking/i,'Estacionamiento al costado del salón, en 4116 Grand Blvd, con entrada por enfrente o por atrás (Edificio 1).','¿Estacionamiento?'],
     [/pag|tarjeta|efectivo|apple|google pay/i,'Aceptamos tarjetas, Apple Pay, Google Pay, pago sin contacto y efectivo.','¿Formas de pago?'],
     [/espa[nñ]ol|aury/i,'¡Claro! Aury habla español. Pida por ella al llamar.','¿Hablan español?'],
     [/donde|direcci|ubica/i,'4116 Grand Blvd, New Port Richey, FL 34652.','¿Dónde están?']
@@ -31,7 +31,7 @@
     [/price|cost|how much|\$|cheap|haircut|trim/i,'Haircuts start at $25 and color starts at $60. Everything else is quoted in a quick free consultation, so the price you hear is the price you pay.','Prices?'],
     [/walk|appointment|same day|today/i,'Yes, walk-ins are welcome Tuesday to Saturday. Call or text ahead to guarantee your chair.','Walk-ins?'],
     [/book|schedule|reserve/i,'Booking is by call or text, and a real person answers. Most appointments are confirmed in under a minute.','How do I book?'],
-    [/park/i,'Parking is on the side of the building at 4116 Grand Blvd.','Parking?'],
+    [/park/i,'Parking is on the side of the building at 4116 Grand Blvd, and you can come in the front or back door (Building 1).','Parking?'],
     [/pay|card|cash|apple|google pay|venmo/i,'All major cards, Apple Pay, Google Pay, contactless and cash.','Payment?'],
     [/perm|curl|wave/i,'Yes, we still do classic perms, body waves and spiral curls; it is a specialty after 35 years. Most perms last 3 to 6 months.','Perms?'],
     [/nail|mani|pedi|gel/i,'Kelly does manicures and pedicures. Call or text to book with her.','Nails?'],
