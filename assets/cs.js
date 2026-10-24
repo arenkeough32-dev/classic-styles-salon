@@ -78,8 +78,8 @@
   var fd=document.getElementById('finder');
   if(fd){
     var R={
-      cut:['Haircut & style','from $25','Walk-ins welcome Tuesday to Saturday. Most cuts take about 30 minutes, and kids are welcome.','/haircuts-styling/','haircut'],
-      color:['Color, highlights or balayage','from $60','Every color service starts with a free consultation. Bring a photo of the look you love, or preview a shade on yourself first.','/hair-color-balayage/','color appointment'],
+      cut:['Haircut & style','$25 & up','Walk-ins welcome Tuesday to Saturday. Most cuts take about 30 minutes, and kids are welcome.','/haircuts-styling/','haircut'],
+      color:['Color, highlights or balayage','$60 & up','Every color service starts with a free consultation. Bring a photo of the look you love, or preview a shade on yourself first.','/hair-color-balayage/','color appointment'],
       fix:['Color correction','by consultation','Box-dye mishaps and brassy tones fixed patiently, in stages if needed. Natalie’s brassy-to-blonde correction is in our gallery.','/hair-color-balayage/','color correction consult'],
       curl:['Perm or body wave','by consultation','Classic perms, body waves and spiral curls from stylists with 35 years of practice. Most last 3 to 6 months.','/perms/','perm consult'],
       care:['Deep-conditioning treatment','by consultation','Repair for dry, sun-stressed or frizzy Florida hair. An easy add-on to any cut or color.','/treatments/','treatment'],
@@ -88,8 +88,8 @@
     };
     var ES=document.documentElement.lang==='es';
     if(ES){R={
-      cut:['Corte y peinado','desde $25','Sin cita son bienvenidos de martes a sábado. La mayoría de los cortes toman unos 30 minutos, y los niños son bienvenidos.','/haircuts-styling/','corte'],
-      color:['Color, mechas o balayage','desde $60','Todo servicio de color empieza con una consulta gratis. Traiga una foto del look que le gusta, o pruebe primero un tono en usted misma.','/hair-color-balayage/','cita de color'],
+      cut:['Corte y peinado','$25 en adelante','Sin cita son bienvenidos de martes a sábado. La mayoría de los cortes toman unos 30 minutos, y los niños son bienvenidos.','/haircuts-styling/','corte'],
+      color:['Color, mechas o balayage','$60 en adelante','Todo servicio de color empieza con una consulta gratis. Traiga una foto del look que le gusta, o pruebe primero un tono en usted misma.','/hair-color-balayage/','cita de color'],
       fix:['Corrección de color','con consulta','Arreglamos con paciencia los desastres de tinte casero y los tonos anaranjados, por etapas si hace falta. La corrección de Natalie, de anaranjado a rubio, está en nuestra galería.','/hair-color-balayage/','consulta de corrección de color'],
       curl:['Permanente u onda de cuerpo','con consulta','Permanentes clásicas, ondas de cuerpo y rizos en espiral con estilistas de 35 años de práctica. La mayoría dura de 3 a 6 meses.','/perms/','consulta de permanente'],
       care:['Tratamiento de hidratación profunda','con consulta','Reparación para el cabello seco, maltratado por el sol o con frizz de Florida. Se agrega fácilmente a cualquier corte o color.','/treatments/','tratamiento'],
