@@ -17,9 +17,11 @@
 
 const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 
+// Shades are the color of the hair's average tone (not the shine), tuned in OKLab.
 export const COLORS = {
-  copper: [184, 98, 48], honey: [214, 164, 84], ash: [178, 170, 160], chocolate: [74, 42, 28],
-  burgundy: [110, 22, 46], rose: [206, 130, 128], rainbow: null,
+  copper: [176, 86, 40], honey: [205, 152, 84], ash: [176, 168, 154], platinum: [222, 216, 202],
+  chocolate: [84, 50, 34], espresso: [40, 28, 24], burgundy: [104, 24, 44], rose: [198, 130, 122],
+  rainbow: null,
 };
 const RAINBOW = [[226, 60, 70], [240, 150, 50], [240, 210, 70], [70, 190, 110], [60, 130, 220], [140, 90, 210]];
 
@@ -158,40 +160,62 @@ export class HairPainter {
     this.unsure = this.rawPeak < 0.5;
     // Contrast curve: kills faint halos on skin/background, keeps soft strand edges.
     for (let i = 0; i < n; i++) {
-      let v = (q[i] * gain - 0.22) / 0.56; v = v < 0 ? 0 : v > 1 ? 1 : v;
+      let v = (q[i] * gain - 0.14) / 0.6; v = v < 0 ? 0 : v > 1 ? 1 : v;
       q[i] = v * v * (3 - 2 * v);
     }
     return q;
   }
 
+  // ---- color state (OKLab, animated) ----------------------------------------
+  // Pick a shade. Unless `instant`, step() glides from the old shade to the new.
+  setColor(key, instant) {
+    const c = COLORS[key];
+    if (c) this.goal = rgbToLab(c);
+    this.goalRainbow = c ? 0 : 1;
+    if (!this.cur || instant) { this.cur = (this.goal || rgbToLab(COLORS.copper)).slice(); this.rainbow = this.goalRainbow; }
+    if (!this.goal) this.goal = this.cur.slice();
+  }
+
+  // Advance the glide by dt milliseconds. Returns true while still moving.
+  step(dt) {
+    if (!this.cur) return false;
+    const k = 1 - Math.exp(-dt / 90); // ~300 ms to settle, eases out
+    let moving = false;
+    for (let i = 0; i < 3; i++) {
+      const d = this.goal[i] - this.cur[i];
+      if (Math.abs(d) > 0.002) { this.cur[i] += d * k; moving = true; } else this.cur[i] = this.goal[i];
+    }
+    const dr = this.goalRainbow - this.rainbow;
+    if (Math.abs(dr) > 0.01) { this.rainbow += dr * k; moving = true; } else this.rainbow = this.goalRainbow;
+    return moving;
+  }
+
   // Recolor full-size pixels `px` (W x H RGBA, edited in place) using matte (ww x wh).
-  paint(px, W, H, matte, ww, wh, colorKey, strength, temporal) {
-    const fixed = COLORS[colorKey];
+  // Columns left of xMin are left untouched (the "before" side of the compare slider).
+  paint(px, W, H, matte, ww, wh, strength, temporal, xMin) {
+    if (!this.cur) this.setColor('copper', true);
     const low = this.low;
-    // Hair statistics at matte resolution, read from the full image by sampling.
-    const sx = W / ww, sy = H / wh;
+    xMin = Math.max(0, Math.min(W, xMin | 0));
+    // Hair statistics, in perceptual lightness, from the smooth base.
     let sum = 0, wsum = 0, top = wh, bot = -1;
     for (let y = 0; y < wh; y++) {
-      const py = Math.min(H - 1, ((y + 0.5) * sy) | 0) * W;
       let rowHit = false;
       for (let x = 0; x < ww; x++) {
-        const m = matte[y * ww + x];
+        const i = y * ww + x, m = matte[i];
         if (m < 0.5) continue;
         rowHit = true;
-        const p = (py + Math.min(W - 1, ((x + 0.5) * sx) | 0)) * 4;
-        sum += lum(px[p], px[p + 1], px[p + 2]) * m; wsum += m;
+        sum += lumToL(low[i]) * m; wsum += m;
       }
       if (rowHit) { if (y < top) top = y; bot = y; }
     }
     if (wsum < 30) return false; // no hair found
+    const sx = W / ww, sy = H / wh;
     const mean = sum / wsum;
-    const k = temporal ? 0.15 : 1;
-    this.meanL = this.meanL < 0 || !temporal ? mean : this.meanL + (mean - this.meanL) * k;
+    this.meanL = this.meanL < 0 || !temporal ? mean : this.meanL + (mean - this.meanL) * 0.15;
     const t0 = top * sy, b0 = (bot + 1) * sy;
     if (this.top < 0 || !temporal) { this.top = t0; this.bot = b0; }
     else { this.top += (t0 - this.top) * 0.2; this.bot += (b0 - this.bot) * 0.2; }
 
-    // Precompute bilinear lookups from full-res columns/rows into the matte.
     if (!this.cx || this.cx.length !== W || this.cxW !== ww) {
       this.cx = new Int32Array(W); this.cf = new Float32Array(W); this.cxW = ww;
     }
@@ -201,26 +225,26 @@ export class HairPainter {
       const i = Math.min(ww - 2, f | 0); cx[x] = i < 0 ? 0 : i; cf[x] = ww > 1 ? f - cx[x] : 0;
     }
 
-    // Brightness mapping. OFF stops near-black noise from being multiplied into blotches.
-    const OFF = 28, mL = this.meanL + OFF;
+    const OFF = 0.08, mL = this.meanL + OFF;
     const span = Math.max(1, this.bot - this.top);
-    let tr = 0, tg = 0, tb = 0, tL = 1;
-    const setTarget = (c) => { tr = c[0]; tg = c[1]; tb = c[2]; tL = Math.max(8, lum(tr, tg, tb)); };
-    if (fixed) setTarget(fixed);
-    const rc = [0, 0, 0];
+    const cur = this.cur, rb = this.rainbow;
+    let tL = cur[0], ta = cur[1], tb = cur[2];
 
     for (let y = 0; y < H; y++) {
-      if (!fixed) {
-        const t = clamp01((y - this.top) / span) * (RAINBOW.length - 1 - 1e-6);
-        const i = t | 0, f = t - i, a = RAINBOW[i], c = RAINBOW[i + 1];
-        rc[0] = a[0] + (c[0] - a[0]) * f; rc[1] = a[1] + (c[1] - a[1]) * f; rc[2] = a[2] + (c[2] - a[2]) * f;
-        setTarget(rc);
+      if (rb > 0) { // rainbow: shade runs down the length of the hair
+        const t = clamp01((y - this.top) / span) * (RAINBOW_LAB.length - 1 - 1e-6);
+        const i = t | 0, f = t - i, A = RAINBOW_LAB[i], C = RAINBOW_LAB[i + 1];
+        tL = cur[0] + ((A[0] + (C[0] - A[0]) * f) - cur[0]) * rb;
+        ta = cur[1] + ((A[1] + (C[1] - A[1]) * f) - cur[1]) * rb;
+        tb = cur[2] + ((A[2] + (C[2] - A[2]) * f) - cur[2]) * rb;
       }
+      const keep = 0.45 + 0.55 * tL;       // dark shades keep depth in highlights
+      const hiSpan = 1 - tL + 1e-3;
       let fy = (y + 0.5) / sy - 0.5; if (fy < 0) fy = 0; if (fy > wh - 1) fy = wh - 1;
       let my = Math.min(wh - 2, fy | 0); if (my < 0) my = 0;
       const ty = wh > 1 ? fy - my : 0, r0 = my * ww, r1 = Math.min(wh - 1, my + 1) * ww;
       const row = y * W * 4;
-      for (let x = 0; x < W; x++) {
+      for (let x = xMin; x < W; x++) {
         const i0 = cx[x], i1 = i0 + 1 < ww ? i0 + 1 : i0, tx = cf[x];
         const a0 = matte[r0 + i0] + (matte[r0 + i1] - matte[r0 + i0]) * tx;
         const a1 = matte[r1 + i0] + (matte[r1 + i1] - matte[r1 + i0]) * tx;
@@ -229,25 +253,69 @@ export class HairPainter {
         m *= strength;
         const p = row + x * 4;
         const r = px[p], g = px[p + 1], b = px[p + 2];
-        // Split brightness into a smooth base (shape of the hair, light and shadow)
-        // and fine detail (strands, plus camera noise). Only the base is remapped
-        // to the new shade; detail goes back on at its natural strength, so noise
-        // in dark hair is never amplified into blotches or shimmer.
-        const b0 = low[r0 + i0] + (low[r0 + i1] - low[r0 + i0]) * tx;
-        const b1 = low[r1 + i0] + (low[r1 + i1] - low[r1 + i0]) * tx;
-        const base = (b0 + (b1 - b0) * ty) * 255;
-        const detail = lum(r, g, b) - base;
-        const s = Math.pow((base + OFF) / mL, 0.85);
-        let nr, ng, nb;
-        if (s <= 1) { nr = tr * s; ng = tg * s; nb = tb * s; }
-        else { // highlights roll smoothly toward white instead of clipping
-          const u = (1 - 1 / s) * (0.45 + 0.55 * tL / 255); // dark shades keep depth
-          nr = tr + (255 - tr) * u; ng = tg + (255 - tg) * u; nb = tb + (255 - tb) * u;
-        }
-        nr += detail; ng += detail; nb += detail;
+        // Smooth base (light and shadow) vs fine detail (strands, camera grain).
+        const l0 = low[r0 + i0] + (low[r0 + i1] - low[r0 + i0]) * tx;
+        const l1 = low[r1 + i0] + (low[r1 + i1] - low[r1 + i0]) * tx;
+        const Lb = lumToL(l0 + (l1 - l0) * ty);
+        const Lp = L8[(0.299 * r + 0.587 * g + 0.114 * b) | 0];
+        // Remap only the base so the hair's average lands on the shade's lightness.
+        const xr = Math.pow((Lb + OFF) / mL, 0.85);
+        let Ln = xr <= 1 ? tL * xr : tL + (1 - tL) * (1 - 1 / xr) * keep;
+        Ln += Lp - Lb;                      // strands go back on at natural strength
+        if (Ln < 0) Ln = 0; else if (Ln > 1) Ln = 1;
+        // Real dyed hair: less saturated in deep shadow and in bright shine.
+        const cf2 = Ln < tL ? Math.sqrt(Ln / (tL + 1e-3)) : 1 - 0.55 * (Ln - tL) / hiSpan;
+        const oa = ta * cf2, ob = tb * cf2;
+        // OKLab -> linear sRGB
+        const l_ = Ln + 0.3963377774 * oa + 0.2158037573 * ob;
+        const m_ = Ln - 0.1055613458 * oa - 0.0638541728 * ob;
+        const s_ = Ln - 0.0894841775 * oa - 1.2914855480 * ob;
+        const l3 = l_ * l_ * l_, m3 = m_ * m_ * m_, s3 = s_ * s_ * s_;
+        const nr = enc(4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3);
+        const ng = enc(-1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3);
+        const nb = enc(-0.0041960863 * l3 - 0.7034186147 * m3 + 1.7076147010 * s3);
         px[p] = r + (nr - r) * m; px[p + 1] = g + (ng - g) * m; px[p + 2] = b + (nb - b) * m;
       }
     }
     return true;
   }
+}
+
+// ---- color helpers ---------------------------------------------------------
+const toLin = (c) => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+// Perceptual lightness of a gray with sRGB value i (0..255).
+const L8 = new Float32Array(256);
+for (let i = 0; i < 256; i++) L8[i] = Math.cbrt(toLin(i));
+// Same, for a luma value in 0..1 (interpolated).
+function lumToL(v) {
+  const f = (v < 0 ? 0 : v > 1 ? 1 : v) * 255, i = f | 0;
+  return i >= 255 ? L8[255] : L8[i] + (L8[i + 1] - L8[i]) * (f - i);
+}
+// Linear 0..1 -> sRGB 0..255 via a 4096-entry table.
+const ENC = new Uint8ClampedArray(4097);
+for (let i = 0; i <= 4096; i++) { const c = i / 4096; ENC[i] = Math.round(255 * (c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055)); }
+const enc = (c) => ENC[c <= 0 ? 0 : c >= 1 ? 4096 : (c * 4096) | 0];
+
+export function rgbToLab(c) {
+  const r = toLin(c[0]), g = toLin(c[1]), b = toLin(c[2]);
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+  return [0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
+    1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
+}
+const RAINBOW_LAB = RAINBOW.map(rgbToLab);
+
+// Merge two models' opinions (same size masks). The detailed multi-part model
+// decides boundaries and protects skin; the dedicated hair model fills gaps.
+export function fuseMasks(multiHair, multiSkin, hairOnly, out) {
+  const n = multiHair.length;
+  out = out && out.length === n ? out : new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    let sk = multiSkin[i] * 1.6; if (sk > 1) sk = 1;
+    const fill = hairOnly ? hairOnly[i] * (1 - sk) * 0.92 : 0;
+    out[i] = multiHair[i] > fill ? multiHair[i] : fill;
+  }
+  return out;
 }
