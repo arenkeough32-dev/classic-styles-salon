@@ -21,7 +21,7 @@
     [/hora|abre|cierra|domingo|lunes|s[aá]bado/i,'Martes a viernes de 9:00 am a 5:00 pm, y sábado de 9:00 am a 3:00 pm. Domingo y lunes cerrado.','¿Horario?'],
     [/precio|cu[aá]nto|cuesta|corte/i,'Los cortes empiezan en $25 y el color en $60. Los demás servicios se cotizan en una consulta rápida y gratis.','¿Precios?'],
     [/sin cita|walk|llegar/i,'Sí, aceptamos clientes sin cita de martes a sábado. Para asegurar su silla, llame o envíe un texto antes.','¿Sin cita?'],
-    [/estacion|parqu|parking/i,'Estacionamiento gratis justo al lado del salón, en 4116 Grand Blvd.','¿Estacionamiento?'],
+    [/estacion|parqu|parking/i,'Estacionamiento al costado del salón, en 4116 Grand Blvd.','¿Estacionamiento?'],
     [/pag|tarjeta|efectivo|apple|google pay/i,'Aceptamos tarjetas, Apple Pay, Google Pay, pago sin contacto y efectivo.','¿Formas de pago?'],
     [/espa[nñ]ol|aury/i,'¡Claro! Aury habla español. Pida por ella al llamar.','¿Hablan español?'],
     [/donde|direcci|ubica/i,'4116 Grand Blvd, New Port Richey, FL 34652.','¿Dónde están?']
@@ -31,14 +31,14 @@
     [/price|cost|how much|\$|cheap|haircut|trim/i,'Haircuts start at $25 and color starts at $60. Everything else is quoted in a quick free consultation, so the price you hear is the price you pay.','Prices?'],
     [/walk|appointment|same day|today/i,'Yes, walk-ins are welcome Tuesday to Saturday. Call or text ahead to guarantee your chair.','Walk-ins?'],
     [/book|schedule|reserve/i,'Booking is by call or text, and a real person answers. Most appointments are confirmed in under a minute.','How do I book?'],
-    [/park/i,'Free parking right beside the building at 4116 Grand Blvd.','Parking?'],
+    [/park/i,'Parking is on the side of the building at 4116 Grand Blvd.','Parking?'],
     [/pay|card|cash|apple|google pay|venmo/i,'All major cards, Apple Pay, Google Pay, contactless and cash.','Payment?'],
     [/perm|curl|wave/i,'Yes, we still do classic perms, body waves and spiral curls; it is a specialty after 35 years. Most perms last 3 to 6 months.','Perms?'],
     [/nail|mani|pedi|gel/i,'Kelly does manicures and pedicures. Call or text to book with her.','Nails?'],
     [/bride|bridal|wedding|prom|updo|event/i,'We do bridal and special-occasion updos, and whole wedding parties are welcome. Book groups a few weeks ahead.','Weddings?'],
     [/kid|child|toddler|son|daughter/i,'Kids are very welcome: patient stylists, first haircuts and kids’ cuts from $25.','Kids?'],
     [/spanish|espa|aury/i,'Yes, Aury speaks Spanish. Ask for her when you call.','Spanish?'],
-    [/where|address|direction|locat/i,'4116 Grand Blvd, New Port Richey, FL 34652, with free parking beside the building.','Where are you?']
+    [/where|address|direction|locat/i,'4116 Grand Blvd, New Port Richey, FL 34652, with parking on the side of the building.','Where are you?']
   ];
   var style = document.createElement('style');
   style.textContent = '.cq-btn{position:fixed;right:1.1rem;bottom:1.1rem;z-index:80;display:flex;align-items:center;gap:.5rem;padding:.8rem 1.15rem;border:0;border-radius:999px;background:var(--ink,#231B16);color:var(--paper,#FAF7F2);font:500 .98rem/1 var(--sans,system-ui);box-shadow:0 10px 30px rgba(35,27,22,.28);cursor:pointer}'

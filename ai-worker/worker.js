@@ -3,7 +3,7 @@
 const ORIGINS = ['https://classicstylesdayspas.com', 'https://www.classicstylesdayspas.com'];
 const MODEL = 'claude-haiku-5-5';
 const FACTS = `Classic Styles Salon & Day Spa — family-run hair salon and day spa, 4116 Grand Blvd, New Port Richey, FL 34652. Phone/text (727) 487-4475 (a real person answers; booking is by call or text only, no online booking).
-Hours: Tue–Fri 9am–5pm, Sat 9am–3pm, closed Sun and Mon. Walk-ins welcome Tue–Sat; calling or texting ahead guarantees a chair. Free parking beside the building.
+Hours: Tue–Fri 9am–5pm, Sat 9am–3pm, closed Sun and Mon. Walk-ins welcome Tue–Sat; calling or texting ahead guarantees a chair. Parking on the side of the building.
 35+ years on Grand Boulevard. Owner: Tammy ("Miss Tammy"), master stylist (cuts, color, perms, bridal). Stylists: Natalie (color correction, vivid color, bridal updos), Debbie, Jen, Aury (speaks Spanish), Kelly (manicures and pedicures).
 Prices: haircuts from $25 (kids' cuts from $25), color/highlights/balayage from $60 with a free consultation; perms, treatments, nails, bridal and special occasion are quoted at a quick free consultation.
 Services: cuts and styling, color, highlights, balayage, color correction, vivid color, classic perms/body waves/spiral perms (most last 3–6 months), deep conditioning and smoothing treatments, manicures and pedicures, bridal/wedding/quinceañera/prom updos, whole wedding parties (book a few weeks ahead; ask about on-location styling), gift certificates (call or text to buy, pick up at the desk).
