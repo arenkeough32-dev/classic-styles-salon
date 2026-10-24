@@ -108,7 +108,7 @@ body.story .burger span{background:var(--cream)}
 
 /* v6.1 polish */
 .reel figcaption span,.dk figcaption span{margin-left:.35em}
-body.story main>section:not(.dk){background:radial-gradient(80% 60% at 100% 0%,rgba(156,91,46,.08),transparent 70%),linear-gradient(180deg,#EFE7DC,#E9E0D3)}
+body.story main>section:not(.dk):not(.on-dark){background:radial-gradient(80% 60% at 100% 0%,rgba(156,91,46,.08),transparent 70%),linear-gradient(180deg,#EFE7DC,#E9E0D3)}
 @media(max-width:860px){
   .hero-dk{align-items:flex-start;padding-top:1rem}
   .hero-dk .mh-art{order:0!important;margin:1.4rem 0 0 auto!important;width:70%!important}
