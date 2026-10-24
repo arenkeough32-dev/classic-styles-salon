@@ -334,3 +334,4 @@ footer{background:var(--bone);padding:clamp(3.5rem,7vw,6rem) 0 7rem;border-top:1
 .compare .tag.b{left:1rem}.compare .tag.a{right:1rem}
 .compare input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .compare-cap{text-align:center;font:italic 400 1.1rem/1.4 var(--serif);margin-top:1rem;color:var(--ink-2)}
+.compare.r34{aspect-ratio:3/4;max-width:560px}
