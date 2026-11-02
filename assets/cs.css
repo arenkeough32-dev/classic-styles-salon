@@ -339,3 +339,13 @@ footer{background:var(--bone);padding:clamp(3.5rem,7vw,6rem) 0 7rem;border-top:1
 .compare.r34{aspect-ratio:3/4;max-width:560px}
 
 @media (max-width:860px){.ft-grid nav{gap:0}.ft-grid nav a{display:block;padding:.55rem 0}}
+
+.visit .findline{color:#D9CEC2;margin:.8rem 0 1.4rem;max-width:36ch}
+.maptabs{display:flex;gap:.5rem;margin-bottom:.75rem;flex-wrap:wrap}
+.maptabs button{font:inherit;font-size:.86rem;letter-spacing:.02em;padding:.55rem 1rem;border-radius:999px;border:1px solid rgba(241,236,228,.35);background:transparent;color:var(--paper);cursor:pointer;min-height:44px}
+.maptabs button.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.maptabs button:focus-visible{outline:2px solid var(--copper-lt);outline-offset:2px}
+.bldg{margin:1.5rem 0 0}
+.bldg img{width:100%;height:auto;display:block;border-radius:3px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.bldg figcaption{margin-top:.7rem;color:#BFB2A5;font-size:.9rem}
+.bldg figcaption span{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-top:.2rem}
