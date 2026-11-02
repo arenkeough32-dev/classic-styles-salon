@@ -25,9 +25,16 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-ext-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Bodoni Moda';font-style:italic;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-opsz-italic.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bodoni Moda';font-style:italic;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-ext-opsz-italic.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Jost';font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/jost-latin-wght-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Jost';font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/jost-latin-ext-wght-normal.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+</style>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Service", "name": "Bridal and wedding hair", "serviceType": "Bridal hair, wedding party hair, quinceañera and prom updos", "url": "https://classicstylesdayspas.com/weddings/", "provider": {"@id": "https://classicstylesdayspas.com/#salon"}, "areaServed": [{"@type": "City", "name": "New Port Richey"}, {"@type": "City", "name": "Holiday"}, {"@type": "City", "name": "Hudson"}, {"@type": "City", "name": "Trinity"}, {"@type": "City", "name": "Port Richey"}, {"@type": "AdministrativeArea", "name": "Pasco County"}], "offers": {"@type": "Offer", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://classicstylesdayspas.com/weddings/", "description": "By consultation"}}
 </script>
@@ -62,7 +69,7 @@
 <section class="page-hero"><div class="wrap"><nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a><span class="sep">/</span><span>Weddings</span></nav>
 <div class="ph-grid"><div><h1>Bridal &amp; wedding hair in New Port Richey</h1><p class="sub">Updos, braids and whole-party styling from a family-run salon with 35+ years of experience. Weddings, quinceañeras and proms, in Pasco County.</p>
 <div class="cta-row"><a class="btn btn-solid" href="sms:+17274874475?&amp;body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20ask%20about%20wedding%20hair.">Text about your date</a><a class="btn btn-outline" href="tel:+17274874475">Call (727) 487-4475</a></div>
-</div><div class="ph-art"><div class="arch"><img alt="Finished pearl and flower bridal braid in front of a gold arched mirror, styled by Classic Styles" height="1751" src="/img/wedding-braid-mirror.jpg" width="1200" fetchpriority="high" style="width:100%;height:100%;object-fit:cover"/></div></div></div></div></section>
+</div><div class="ph-art"><div class="arch"><img alt="Finished pearl and flower bridal braid in front of a gold arched mirror, styled by Classic Styles" height="1751" src="/img/wedding-braid-mirror.webp" srcset="/img/wedding-braid-mirror-480.webp 480w, /img/wedding-braid-mirror-800.webp 800w, /img/wedding-braid-mirror.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" width="1200" fetchpriority="high" style="width:100%;height:100%;object-fit:cover"/></div></div></div></div></section>
 <section class="sec" id="intro">
 <div class="wrap">
 <h2>Your wedding morning, handled</h2>
@@ -77,10 +84,10 @@
 <p class="wed-credit">Photos: Arianna Cromie Photography</p>
 </div>
 <ol class="wed-stack" role="list">
-<li class="wcard"><figure><img src="/img/wedding-braid-start.jpg" alt="Classic Styles stylist braiding a bride's long blonde hair with pink flowers and pearls in the bridal suite" width="1200" height="1636" loading="lazy" decoding="async"><figcaption><b>01</b> The braid begins</figcaption></figure></li>
-<li class="wcard"><figure><img src="/img/wedding-braid-pins.jpg" alt="Stylist pinning pearl vines into a bride's braid before her wedding" width="1200" height="1711" loading="lazy" decoding="async"><figcaption><b>02</b> Pearls, pinned one by one</figcaption></figure></li>
-<li class="wcard"><figure><img src="/img/wedding-braid-mirror.jpg" alt="Finished pearl and flower braid on a bride, seen from behind in front of a gold arched mirror" width="1200" height="1751" loading="lazy" decoding="async"><figcaption><b>03</b> The finished braid</figcaption></figure></li>
-<li class="wcard"><figure><img src="/img/wedding-reveal.jpg" alt="Bride in a lace wedding dress smiling at her reflection, her flower and pearl braid down her back" width="1200" height="1556" loading="lazy" decoding="async"><figcaption><b>04</b> The reveal</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-braid-start.webp" srcset="/img/wedding-braid-start-480.webp 480w, /img/wedding-braid-start-800.webp 800w, /img/wedding-braid-start.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" alt="Classic Styles stylist braiding a bride's long blonde hair with pink flowers and pearls in the bridal suite" width="1200" height="1636" loading="lazy" decoding="async"><figcaption><b>01</b> The braid begins</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-braid-pins.webp" srcset="/img/wedding-braid-pins-480.webp 480w, /img/wedding-braid-pins-800.webp 800w, /img/wedding-braid-pins.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" alt="Stylist pinning pearl vines into a bride's braid before her wedding" width="1200" height="1711" loading="lazy" decoding="async"><figcaption><b>02</b> Pearls, pinned one by one</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-braid-mirror.webp" srcset="/img/wedding-braid-mirror-480.webp 480w, /img/wedding-braid-mirror-800.webp 800w, /img/wedding-braid-mirror.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" alt="Finished pearl and flower braid on a bride, seen from behind in front of a gold arched mirror" width="1200" height="1751" loading="lazy" decoding="async"><figcaption><b>03</b> The finished braid</figcaption></figure></li>
+<li class="wcard"><figure><img src="/img/wedding-reveal.webp" srcset="/img/wedding-reveal-480.webp 480w, /img/wedding-reveal-800.webp 800w, /img/wedding-reveal.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" alt="Bride in a lace wedding dress smiling at her reflection, her flower and pearl braid down her back" width="1200" height="1556" loading="lazy" decoding="async"><figcaption><b>04</b> The reveal</figcaption></figure></li>
 </ol>
 </div>
 </section>

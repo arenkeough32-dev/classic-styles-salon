@@ -25,9 +25,16 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-ext-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Bodoni Moda';font-style:italic;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-opsz-italic.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bodoni Moda';font-style:italic;font-display:swap;font-weight:400 900;src:url(/assets/fonts/bodoni-moda-latin-ext-opsz-italic.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Jost';font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/jost-latin-wght-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Jost';font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/jost-latin-ext-wght-normal.woff2) format('woff2-variations');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+</style>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Service", "image": ["https://classicstylesdayspas.com/img/natalie-before-after-color.jpg", "https://classicstylesdayspas.com/img/natalie-vivid-color.jpg"], "name": "Hair Coloring & Balayage", "serviceType": "Hair coloring, highlights, lowlights and balayage", "url": "https://classicstylesdayspas.com/hair-color-balayage/", "provider": {"@id": "https://classicstylesdayspas.com/#salon"}, "areaServed": [{"@type": "City", "name": "New Port Richey"}, {"@type": "City", "name": "Holiday"}, {"@type": "City", "name": "Hudson"}, {"@type": "City", "name": "Trinity"}, {"@type": "City", "name": "Port Richey"}, {"@type": "AdministrativeArea", "name": "Pasco County"}], "offers": {"@type": "Offer", "priceCurrency": "USD", "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "USD", "minPrice": 60}}}
 </script>
@@ -63,7 +70,7 @@
 <div class="ph-grid"><div><h1>Hair Coloring &amp; Balayage in New Port Richey</h1><p class="sub">Lived-in balayage, dimensional highlights and full-coverage color that holds up to Gulf Coast humidity — from a 5.0-star salon family-owned for 35+ years.</p>
 <div class="cta-row"><a class="btn btn-solid" href="tel:+17274874475">Call (727) 487-4475</a><a class="btn btn-outline" href="sms:+17274874475?&amp;body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
 <a class="rating" href="https://www.google.com/maps/place/Classic+Styles/@28.2190077,-82.7228289,17z/data=!3m1!4b1!4m6!3m5!1s0x88c291e8916f6a6b:0xa63c885e7e4ea1c5!8m2!3d28.2190077!4d-82.7228289!16s%2Fg%2F11bx1r3l72" rel="noopener" target="_blank"><b>5.0</b><span aria-hidden="true" class="stars">★★★★★</span><span>49 Google reviews</span></a>
-</div><div class="ph-art"><div class="arch"><img alt="Vivid rainbow hair color by Natalie at Classic Styles Salon, New Port Richey FL" fetchpriority="high" height="1000" src="/img/natalie-vivid-color.jpg" width="800"/></div></div></div></div></section>
+</div><div class="ph-art"><div class="arch"><img alt="Vivid rainbow hair color by Natalie at Classic Styles Salon, New Port Richey FL" fetchpriority="high" height="1000" src="/img/natalie-vivid-color.webp" srcset="/img/natalie-vivid-color-480.webp 480w, /img/natalie-vivid-color.webp 800w" sizes="(max-width: 860px) 92vw, 45vw" width="800"/></div></div></div></div></section>
 <!-- ============ INTRO ============ -->
 <section class="sec" id="intro">
 <div class="wrap">
@@ -79,8 +86,8 @@
 <h2>Recent color from our chairs</h2>
 <p class="lead">From brassy-to-blonde corrections to full vivid rainbows — real client color, not stock photos.</p>
 <div class="work-grid">
-<figure class="work"><div class="frame"><img alt="Before and after: brassy orange hair corrected to dimensional blonde highlights by Natalie at Classic Styles Salon, New Port Richey FL" decoding="async" height="1000" loading="lazy" src="/img/natalie-before-after-color.jpg" width="800"/></div><figcaption>Color correction<small>by Natalie</small></figcaption></figure>
-<figure class="work"><div class="frame"><img alt="Vivid rainbow hair color with red, yellow, green and blue sections by Natalie at Classic Styles Salon, New Port Richey FL" decoding="async" height="1000" loading="lazy" src="/img/natalie-vivid-color.jpg" width="800"/></div><figcaption>Vivid color<small>by Natalie</small></figcaption></figure>
+<figure class="work"><div class="frame"><img alt="Before and after: brassy orange hair corrected to dimensional blonde highlights by Natalie at Classic Styles Salon, New Port Richey FL" decoding="async" height="1000" loading="lazy" src="/img/natalie-before-after-color.webp" srcset="/img/natalie-before-after-color-480.webp 480w, /img/natalie-before-after-color.webp 800w" sizes="(max-width: 860px) 92vw, 45vw" width="800"/></div><figcaption>Color correction<small>by Natalie</small></figcaption></figure>
+<figure class="work"><div class="frame"><img alt="Vivid rainbow hair color with red, yellow, green and blue sections by Natalie at Classic Styles Salon, New Port Richey FL" decoding="async" height="1000" loading="lazy" src="/img/natalie-vivid-color.webp" srcset="/img/natalie-vivid-color-480.webp 480w, /img/natalie-vivid-color.webp 800w" sizes="(max-width: 860px) 92vw, 45vw" width="800"/></div><figcaption>Vivid color<small>by Natalie</small></figcaption></figure>
 </div>
 <p class="lead" style="margin-top:1.4rem"><a href="/#gallery">See the full gallery →</a></p>
 </div>
@@ -91,8 +98,8 @@
 <h2>Flat brown to warm, dimensional color</h2>
 <p class="lead">A real client at our chair: soft caramel dimension and loose curls. Drag the slider to see the difference.</p>
 <div class="compare r34" style="margin-top:2rem">
-<img src="/img/color-before.jpg" alt="Before: long, flat dark brown hair at Classic Styles Salon in New Port Richey" width="1200" height="1600" loading="lazy" decoding="async">
-<img class="after" src="/img/color-after.jpg" alt="After: warm brown hair with caramel dimension and soft curls" width="1200" height="1600" loading="lazy" decoding="async">
+<img src="/img/color-before.webp" srcset="/img/color-before-480.webp 480w, /img/color-before-800.webp 800w, /img/color-before.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" alt="Before: long, flat dark brown hair at Classic Styles Salon in New Port Richey" width="1200" height="1600" loading="lazy" decoding="async">
+<img class="after" src="/img/color-after.webp" srcset="/img/color-after-480.webp 480w, /img/color-after-800.webp 800w, /img/color-after.webp 1200w" sizes="(max-width: 860px) 92vw, 45vw" alt="After: warm brown hair with caramel dimension and soft curls" width="1200" height="1600" loading="lazy" decoding="async">
 <div class="bar"></div><div class="knob" aria-hidden="true">&harr;</div>
 <span class="tag b">Before</span><span class="tag a">After</span>
 <input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
