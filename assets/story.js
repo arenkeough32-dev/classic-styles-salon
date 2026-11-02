@@ -2,13 +2,11 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var desktop = window.matchMedia('(min-width: 861px)').matches;
-  var vid = document.querySelector('.walk-frame video');
 
   // Reduced motion or missing libraries: show the calm, static version.
   if (reduce || !window.gsap || !window.ScrollTrigger) {
     document.querySelectorAll('.walk-cap,.walk-end').forEach(function(el){ el.style.opacity = 1; });
     document.querySelectorAll('.bigquote .w').forEach(function(w){ w.style.opacity = 1; });
-    if (vid) { vid.setAttribute('controls',''); }
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
@@ -44,12 +42,23 @@
   gsap.to('.hero-dk .mast', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.hero-dk', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.hero-dk .mh-art', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '.hero-dk', start: 'top top', end: 'bottom top', scrub: true } });
 
-  // 3. Walk in the front door: pinned scene grows the arch photo while captions appear (video removed: scroll-seeking lagged on phones)
+  // 3. Walk in the front door: pinned scene. Four real photos of the salon push forward and
+  //    cross-fade as you scroll (a "walkthrough"), using only transform/opacity so phones stay smooth.
   var walk = document.querySelector('.walk');
   if (walk) {
+    var shots = walk.querySelectorAll('.walk-frame .ws');
+    // warm the later photos as the visitor gets close, so the fades never show a blank frame
+    ScrollTrigger.create({ trigger: walk, start: 'top 180%', once: true, onEnter: function(){ shots.forEach(function(im){ im.loading = 'eager'; if (im.decode) im.decode().catch(function(){}); }); } });
     var tl = gsap.timeline({ scrollTrigger: { trigger: walk, start: 'top top', end: desktop ? '+=260%' : '+=200%', pin: true, scrub: 0.6, anticipatePin: 1 } });
-    tl.fromTo('.walk-frame', { scale: desktop ? 0.62 : 0.8 }, { scale: desktop ? 1.08 : 1.02, ease: 'none', duration: 10 }, 0)
-      .to('.walk-cap.c1', { opacity: 1, y: -10, duration: 1 }, 0.6).to('.walk-cap.c1', { opacity: 0, duration: 1 }, 3.2)
+    tl.fromTo('.walk-frame', { scale: desktop ? 0.62 : 0.8 }, { scale: desktop ? 1.08 : 1.02, ease: 'none', duration: 10 }, 0);
+    // [start, end] of each photo's time on screen; each one "walks" forward, the next fades in over it
+    var spans = [[0, 3.6], [2.8, 6.2], [5.4, 8.4], [7.6, 10]];
+    shots.forEach(function(im, i){
+      var s = spans[i] || spans[spans.length - 1];
+      tl.fromTo(im, { scale: 1, xPercent: i % 2 ? 2 : -2 }, { scale: 1.22, xPercent: i % 2 ? -2 : 2, ease: 'none', duration: s[1] - s[0] }, s[0]);
+      if (i > 0) tl.fromTo(im, { opacity: 0 }, { opacity: 1, ease: 'none', duration: 0.8 }, s[0]);
+    });
+    tl.to('.walk-cap.c1', { opacity: 1, y: -10, duration: 1 }, 0.6).to('.walk-cap.c1', { opacity: 0, duration: 1 }, 3.2)
       .to('.walk-cap.c2', { opacity: 1, y: -10, duration: 1 }, 3.6).to('.walk-cap.c2', { opacity: 0, duration: 1 }, 6.2)
       .to('.walk-cap.c3', { opacity: 1, y: -10, duration: 1 }, 6.6)
       .to('.walk-end', { opacity: 1, duration: 1 }, 8.2);
