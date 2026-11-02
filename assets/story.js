@@ -44,16 +44,11 @@
   gsap.to('.hero-dk .mast', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.hero-dk', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.hero-dk .mh-art', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '.hero-dk', start: 'top top', end: 'bottom top', scrub: true } });
 
-  // 3. Walk in the front door: pinned scene, scroll scrubs the video and grows the arch
+  // 3. Walk in the front door: pinned scene grows the arch photo while captions appear (video removed: scroll-seeking lagged on phones)
   var walk = document.querySelector('.walk');
-  if (walk && vid) {
-    var prime = function(){ var p = vid.play(); if (p && p.then) p.then(function(){ vid.pause(); }).catch(function(){}); };
-    vid.preload = 'auto'; vid.load(); prime();
-    var dur = 7.2; vid.addEventListener('loadedmetadata', function(){ dur = vid.duration || dur; });
+  if (walk) {
     var tl = gsap.timeline({ scrollTrigger: { trigger: walk, start: 'top top', end: desktop ? '+=260%' : '+=200%', pin: true, scrub: 0.6, anticipatePin: 1 } });
-    var state = { t: 0 };
-    tl.to(state, { t: 1, ease: 'none', duration: 10, onUpdate: function(){ var target = state.t * (dur - 0.05); if (Math.abs(vid.currentTime - target) > 0.02) vid.currentTime = target; } }, 0)
-      .fromTo('.walk-frame', { scale: desktop ? 0.62 : 0.8 }, { scale: desktop ? 1.08 : 1.02, ease: 'none', duration: 10 }, 0)
+    tl.fromTo('.walk-frame', { scale: desktop ? 0.62 : 0.8 }, { scale: desktop ? 1.08 : 1.02, ease: 'none', duration: 10 }, 0)
       .to('.walk-cap.c1', { opacity: 1, y: -10, duration: 1 }, 0.6).to('.walk-cap.c1', { opacity: 0, duration: 1 }, 3.2)
       .to('.walk-cap.c2', { opacity: 1, y: -10, duration: 1 }, 3.6).to('.walk-cap.c2', { opacity: 0, duration: 1 }, 6.2)
       .to('.walk-cap.c3', { opacity: 1, y: -10, duration: 1 }, 6.6)

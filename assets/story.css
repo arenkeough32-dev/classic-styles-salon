@@ -47,7 +47,7 @@ body.story .burger span{background:var(--cream)}
 .walk{height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .walk-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .walk-frame{position:relative;height:min(78svh,820px);aspect-ratio:9/16;border-radius:999px 999px 6px 6px;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.6);outline:1px solid rgba(200,147,106,.45);outline-offset:10px;will-change:transform}
-.walk-frame video{width:100%;height:100%;object-fit:cover}
+.walk-frame video,.walk-frame img{width:100%;height:100%;object-fit:cover;display:block}
 .walk-cap{position:absolute;max-width:21rem;font:400 clamp(1.6rem,3vw,2.6rem)/1.12 var(--serif);color:var(--cream);opacity:0}
 .walk-cap small{display:block;font:400 1rem/1.5 var(--sans);color:var(--cream-2);margin-top:.7rem}
 .walk-cap.c1{left:var(--gut);top:22%}.walk-cap.c2{right:var(--gut);top:40%;text-align:right}.walk-cap.c3{left:var(--gut);bottom:16%}
