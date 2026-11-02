@@ -6,7 +6,7 @@
   // Reduced motion or missing libraries: show the calm, static version.
   if (reduce || !window.gsap || !window.ScrollTrigger) {
     document.querySelectorAll('.walk-cap,.walk-end').forEach(function(el){ el.style.opacity = 1; });
-    document.querySelectorAll('.bigquote .w').forEach(function(w){ w.style.opacity = 1; });
+    
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
@@ -28,19 +28,6 @@
       });
     });
   }
-
-  // 2. Masthead letters rise in, then the copy follows
-  var mast = document.querySelectorAll('.mast span');
-  if (window.SplitText && mast.length) {
-    mast.forEach(function(l){ l.style.overflow = 'hidden'; });
-    var chars = new SplitText(mast, { type: 'chars' }).chars;
-    gsap.from(chars, { yPercent: 110, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.035, delay: 0.1 });
-  }
-  gsap.from('.hero-dk .mh-copy > *', { y: 24, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.55 });
-  gsap.from('.hero-dk .mh-art', { clipPath: 'inset(100% 0 0 0)', duration: 1.4, ease: 'expo.out', delay: 0.3 });
-  // hero parallax depth: words drift slowly, photo lifts faster
-  gsap.to('.hero-dk .mast', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.hero-dk', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.hero-dk .mh-art', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '.hero-dk', start: 'top top', end: 'bottom top', scrub: true } });
 
   // 3. Walk in the front door: pinned scene. Four real photos of the salon push forward and
   //    cross-fade as you scroll (a "walkthrough"), using only transform/opacity so phones stay smooth.
@@ -67,9 +54,7 @@
   // 4. Horizontal reel of real work (desktop): vertical scroll slides the gallery sideways
   var reel = document.querySelector('.reel');
   if (reel && desktop) {
-    var dist = function(){ return Math.max(0, reel.scrollWidth - window.innerWidth); };
-    gsap.to(reel, { x: function(){ return -dist(); }, ease: 'none',
-      scrollTrigger: { trigger: '.reel-wrap', start: 'center center', end: function(){ return '+=' + dist(); }, pin: '#work', scrub: 0.8, invalidateOnRefresh: true } });
+    // desktop: native horizontal scroll; arrow buttons are added by v7.js
   } else if (reel) { // phones: 3D ring while swiping
     var upd = function(){ var c = reel.scrollLeft + reel.clientWidth / 2;
       reel.querySelectorAll('figure').forEach(function(f){ var m = f.offsetLeft + f.offsetWidth / 2, d = Math.max(-1, Math.min(1, (m - c) / f.offsetWidth));
@@ -77,28 +62,7 @@
     reel.addEventListener('scroll', function(){ requestAnimationFrame(upd); }, { passive: true }); upd();
   }
 
-  // 5. The wedding review lights up word by word
-  var bq = document.querySelector('.bigquote');
-  if (bq) {
-    var words = bq.querySelectorAll('.w');
-    gsap.to(words, { opacity: 1, stagger: 0.08, ease: 'none', scrollTrigger: { trigger: bq, start: 'top 80%', end: 'bottom 45%', scrub: true } });
-  }
-
-  // 6. Section headlines rise line by line, once
-  if (window.SplitText) {
-    document.querySelectorAll('main h2:not(.sr-only):not(.no-split)').forEach(function(h){
-      var s = new SplitText(h, { type: 'lines', linesClass: 'line-mask-inner' });
-      s.lines.forEach(function(l){ var m = document.createElement('span'); m.className = 'line-mask'; l.parentNode.insertBefore(m, l); m.appendChild(l); });
-      gsap.from(s.lines, { yPercent: 105, duration: 1, ease: 'expo.out', stagger: 0.09, scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
-    });
-  }
-
-  // 7. Count-up numbers
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    var to = parseFloat(el.getAttribute('data-count')), dec = (el.getAttribute('data-count').split('.')[1] || '').length, o = { v: 0 };
-    el.textContent = (0).toFixed(dec);
-    gsap.to(o, { v: to, duration: 1.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: function(){ el.textContent = o.v.toFixed(dec); } });
-  });
+  // 5-7. Headline, quote and number reveals now live in v7.css (scroll-driven CSS, screenshot-safe).
 
   window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
   }

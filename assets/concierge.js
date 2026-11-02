@@ -43,7 +43,7 @@
   var style = document.createElement('style');
   style.textContent = '.cq-btn{position:fixed;right:1.1rem;bottom:1.1rem;z-index:80;display:flex;align-items:center;gap:.5rem;padding:.8rem 1.15rem;border:0;border-radius:999px;background:var(--ink,#231B16);color:var(--paper,#FAF7F2);font:500 .98rem/1 var(--sans,system-ui);box-shadow:0 10px 30px rgba(35,27,22,.28);cursor:pointer}'
    +'.cq-btn:hover{background:var(--copper,#9C5B2E)}.cq-dot{width:.55rem;height:.55rem;border-radius:50%;background:#7BC08A}'
-   +'@media(max-width:980px){.cq-btn{bottom:calc(4.4rem + env(safe-area-inset-bottom,0));right:.8rem;padding:.7rem 1rem}}'
+   +'@media(max-width:980px){.cq-btn{display:none!important}.mbar{grid-template-columns:1fr 1fr 4.2rem!important}.mbar-ask{display:flex;flex-direction:column;gap:.2rem;align-items:center;justify-content:center;min-height:3.6rem;border:0;border-left:1px solid rgba(250,247,242,.18);background:var(--ink,#231B16);color:var(--paper,#FAF7F2);font:500 .78rem/1 var(--sans,system-ui);cursor:pointer;padding:0}.mbar-ask svg{width:20px;height:20px}}@media(min-width:981px){.mbar-ask{display:none}}'
    +'.cq{position:fixed;right:1.1rem;bottom:1.1rem;z-index:90;width:min(23rem,calc(100vw - 1.6rem));max-height:min(36rem,calc(100vh - 2rem));display:none;flex-direction:column;background:var(--paper,#FAF7F2);border-radius:18px 18px 4px 4px;box-shadow:0 30px 80px rgba(35,27,22,.35);overflow:hidden}'
    +'@media(max-width:980px){.cq{right:.8rem;bottom:calc(4.4rem + env(safe-area-inset-bottom,0));max-height:calc(100vh - 6.5rem)}}'
    +'.cq.open{display:flex}.cq-hd{background:var(--ink,#231B16);color:var(--paper,#FAF7F2);padding:1rem 1.1rem;display:flex;justify-content:space-between;gap:1rem}'
@@ -81,8 +81,18 @@
   }
   KB.slice(0, 6).forEach(function(k){ var c = document.createElement('button'); c.type = 'button'; c.textContent = k[2]; c.onclick = function(){ answer(k[2]); }; chips.appendChild(c); });
   var greeted = false;
-  function open(){ box.classList.add('open'); btn.style.display = 'none'; if (!greeted) { say(T.hi, 'b'); greeted = true; } input.focus({preventScroll:true}); }
-  function close(){ box.classList.remove('open'); btn.style.display = ''; btn.focus(); }
+  var opener = null;
+  function open(){ opener = document.activeElement; box.classList.add('open'); btn.style.display = 'none'; if (!greeted) { say(T.hi, 'b'); greeted = true; } input.focus({preventScroll:true}); }
+  function close(){ box.classList.remove('open'); btn.style.display = ''; var o = (opener && opener.offsetParent !== null) ? opener : btn; if (o.offsetParent !== null) o.focus(); }
+  window.csAsk = open;
+  // Phones: the launcher lives in the bottom call bar, so it never floats over the page.
+  var mbar = document.querySelector('.mbar');
+  if (mbar && !mbar.querySelector('.mbar-ask')) {
+    var mb = document.createElement('button'); mb.type = 'button'; mb.className = 'mbar-ask'; mb.setAttribute('aria-haspopup', 'dialog');
+    mb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke-linejoin="round"/></svg>' + (ES ? 'Dudas' : 'Ask');
+    mb.setAttribute('aria-label', T.open);
+    mb.onclick = open; mbar.appendChild(mb);
+  }
   btn.onclick = open; box.querySelector('.cq-x').onclick = close;
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && box.classList.contains('open')) close(); });
   box.querySelector('form').onsubmit = function(e){ e.preventDefault(); var v = input.value.trim(); if (v) { answer(v); input.value = ''; } };
