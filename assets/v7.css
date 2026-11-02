@@ -157,8 +157,8 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
 
 /* ---------- inside the salon ---------- */
 .in7{position:relative;overflow:hidden}
-.in7-hero{position:relative;height:min(86svh,860px);min-height:30rem;overflow:hidden;background:#1B1410}
-.in7-hero>img,.in7-hero>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.in7-hero{position:relative;height:min(74svh,720px);min-height:30rem;overflow:hidden;background:#1B1410}
+.in7-hero>picture,.in7-hero picture>img,.in7-hero>img,.in7-hero>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .in7-hero>video{opacity:0;transition:opacity 1.6s ease}
 .in7-hero>video.on{opacity:1}
 .in7-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,17,13,.55),rgba(23,17,13,.05) 35%,rgba(23,17,13,.15) 60%,var(--night) 100%),linear-gradient(90deg,rgba(23,17,13,.6),transparent 55%);pointer-events:none}
@@ -227,3 +227,5 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
   .reel-ctl button{width:3.2rem;height:3.2rem;border-radius:50%;border:1px solid rgba(243,236,226,.4);background:transparent;color:var(--cream);font:300 1.4rem/1 var(--sans);cursor:pointer}
   .reel-ctl button:hover{background:var(--cream);color:var(--ink)}}
 @media(max-width:980px){.mbar a{text-align:center;padding:0 .4rem;line-height:1.15}}
+body.story header.site{background:rgba(23,17,13,.94)}
+.nails7-ph figure:nth-child(2) img{object-position:50% 25%}
