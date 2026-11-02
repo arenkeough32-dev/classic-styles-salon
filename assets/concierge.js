@@ -5,7 +5,7 @@
   var AI_ENDPOINT = ''; // set to the Cloudflare Worker URL to switch on AI answers
   var hist = [];
   var TEL = 'tel:+17274874475';
-  var SMS = 'sms:+17274874475?&body=' + encodeURIComponent(ES ? 'Hola Classic Styles! Quisiera hacer una cita.' : "Hi Classic Styles! I'd like to book an appointment.");
+  var SMS = 'sms:+17274874475?&body=' + encodeURIComponent(ES ? '¡Hola, Classic Styles! Quisiera hacer una cita.' : "Hi Classic Styles! I'd like to book an appointment.");
   var T = ES ? {
     open:'Pregúntenos', title:'Classic Styles', sub:'Respuestas al instante. Para reservar, una persona real le contesta.',
     hi:'¡Hola! ¿En qué le puedo ayudar? Elija una pregunta o escríbala.', ph:'Escriba su pregunta…', send:'Enviar',
@@ -28,7 +28,7 @@
   ] : [
     [/hour|open|close|sunday|monday|saturday|today/i,'Tuesday to Friday 9 am to 5 pm, and Saturday 9 am to 3 pm. Closed Sunday and Monday.','Hours?'],
     [/balayage|color|colour|highlight|gray|grey|blonde/i,'Color, highlights and balayage start at $60, and every color service starts with a free consult. You can preview a shade on yourself with our live color mirror.','Color & balayage?'],
-    [/price|cost|how much|\$|cheap|haircut|trim/i,'Haircuts start at $25 and color starts at $60. Everything else is quoted in a quick free consultation, so the price you hear is the price you pay.','Prices?'],
+    [/price|cost|how much|\$|cheap|haircut|trim/i,'Haircuts start at $25 and color starts at $60. Everything else is quoted in a quick free consultation, and we quote the price before we start.','Prices?'],
     [/walk|appointment|same day|today/i,'Yes, walk-ins are welcome Tuesday to Saturday. Call or text ahead to guarantee your chair.','Walk-ins?'],
     [/book|schedule|reserve/i,'Booking is by call or text, and a real person answers. Most appointments are confirmed in under a minute.','How do I book?'],
     [/park/i,'Parking is on the side of the building at 4116 Grand Blvd, and you can come in the front or back door (Unit 1).','Parking?'],

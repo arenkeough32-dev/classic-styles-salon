@@ -89,7 +89,7 @@
     var ES=document.documentElement.lang==='es';
     if(ES){R={
       cut:['Corte y peinado','$25 en adelante','Sin cita son bienvenidos de martes a sábado. La mayoría de los cortes toman unos 30 minutos, y los niños son bienvenidos.','/haircuts-styling/','corte'],
-      color:['Color, mechas o balayage','$60 en adelante','Todo servicio de color empieza con una consulta gratis. Traiga una foto del look que le gusta, o pruebe primero un tono en usted misma.','/hair-color-balayage/','cita de color'],
+      color:['Color, mechas o balayage','$60 en adelante','Todo servicio de color empieza con una consulta gratis. Traiga una foto del look que le gusta, o pruebe primero un tono en usted.','/hair-color-balayage/','cita de color'],
       fix:['Corrección de color','con consulta','Arreglamos con paciencia los desastres de tinte casero y los tonos anaranjados, por etapas si hace falta. La corrección de Natalie, de anaranjado a rubio, está en nuestra galería.','/hair-color-balayage/','consulta de corrección de color'],
       curl:['Permanente u onda de cuerpo','con consulta','Permanentes clásicas, ondas de cuerpo y rizos en espiral con estilistas de 35 años de práctica. La mayoría dura de 3 a 6 meses.','/perms/','consulta de permanente'],
       care:['Tratamiento de hidratación profunda','con consulta','Reparación para el cabello seco, maltratado por el sol o con frizz de Florida. Se agrega fácilmente a cualquier corte o color.','/treatments/','tratamiento'],
@@ -103,7 +103,7 @@
     }); });
     fd.querySelectorAll('[data-when]').forEach(function(b){ b.addEventListener('click',function(){
       var r=R[pick], soon=b.getAttribute('data-when')==='soon';
-      var body=encodeURIComponent(ES?('Hola Classic Styles! Quisiera reservar: '+r[4]+(soon?' esta semana.':'. ¿Cuándo tienen espacio?')):("Hi Classic Styles! I'd like to book a "+r[4]+(soon?' this week.':'. When do you have openings?')));
+      var body=encodeURIComponent(ES?('¡Hola, Classic Styles! Quisiera reservar: '+r[4]+(soon?' esta semana.':'. ¿Cuándo tienen espacio?')):("Hi Classic Styles! I'd like to book a "+r[4]+(soon?' this week.':'. When do you have openings?')));
       var out=fd.querySelector('.f-result');
       out.innerHTML='<h3>'+r[0]+'</h3><span class="price">'+r[1]+'</span><p>'+r[2]+'</p>'
         +(ES?(soon?'<p>Recibimos sin cita de martes a sábado, pero una llamada o un texto rápido le asegura su silla.</p>':'<p>Envíenos un texto y una estilista le responde entre clientas con los horarios disponibles.</p>'):(soon?'<p>Walk-ins are welcome Tuesday to Saturday, but a quick call or text guarantees your chair.</p>':'<p>Text us and a stylist will reply between clients with open times.</p>'))
