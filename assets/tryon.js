@@ -10,7 +10,7 @@ const MULTI = BASE + 'selfie_multiclass_256x256/float32/latest/selfie_multiclass
 const HAIR = BASE + 'hair_segmenter/float32/latest/hair_segmenter.tflite';
 
 const PHONE = '(727) 487-4475';
-const SHARE_TEXT = 'Hi Classic Styles! I tried this color on your website — what would it take to get it?';
+const SHARE_TEXT = 'Hi Classic Styles! I tried this color on your website. What would it take to get it?';
 const TIP_FIND = 'Face the camera with your hair down and in good light so the mirror can see all of it.';
 const TIP_PHOTO = 'This style is hard for the mirror to read, so the color may look patchy. For the best preview, use a photo facing forward with your hair down.';
 const STILL_MAX = 1080;
