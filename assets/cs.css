@@ -40,7 +40,7 @@ h3{font-size:clamp(1.35rem,2vw,1.6rem);font-weight:500}
 .on-dark .btn-solid{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .on-dark .btn-solid:hover{background:var(--copper-lt);border-color:var(--copper-lt)}
 .cta-row,.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
-.textlink{color:var(--copper);font-weight:500;text-decoration:underline}
+.textlink{color:#8F5328;font-weight:500;text-decoration:underline}
 
 /* ---------- header ---------- */
 header.site{position:sticky;top:0;z-index:60;background:rgba(241,236,228,.88);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
@@ -116,7 +116,7 @@ nav.main a:hover,nav.main a[aria-current]{border-bottom-color:var(--copper)}
 .mrow-top{display:flex;align-items:baseline;gap:.8rem}
 .mrow h3{margin:0;font-size:clamp(1.45rem,2.4vw,2rem)}
 .mrow .lead-dots{flex:1;border-bottom:1px dotted rgba(35,27,22,.45);transform:translateY(-.3em);min-width:1.5rem}
-.mrow .price{font:500 1.05rem/1 var(--sans);white-space:nowrap;color:var(--copper)}
+.mrow .price{font:500 1.05rem/1 var(--sans);white-space:nowrap;color:#8F5328}
 .mrow p{margin:.55rem 0 0;color:var(--ink-2);max-width:40em}
 .mrow .note{display:block;font:italic 400 .95rem/1.4 var(--serif);color:var(--muted);margin-top:.35rem}
 a.mrow:hover h3{color:var(--copper)}
@@ -211,7 +211,7 @@ details .a,details>p{margin:0 0 1.4rem;color:var(--ink-2);max-width:44em}
 footer{background:var(--bone);padding:clamp(3.5rem,7vw,6rem) 0 7rem;border-top:1px solid rgba(35,27,22,.12)}
 .ft-mark{font:400 clamp(3rem,9vw,7.5rem)/.9 var(--serif);letter-spacing:-.03em;margin:0 0 2.2rem}
 .ft-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut);font-size:.97rem;color:var(--ink-2)}
-.ft-grid h3{font-size:1.15rem;color:var(--ink);margin-bottom:.6rem}
+.ft-grid h2,.ft-grid h3{font-size:1.15rem;color:var(--ink);margin-bottom:.6rem}
 .ft-grid nav{display:grid;gap:.35rem}
 .ft-grid a{text-decoration:none}.ft-grid a:hover{color:var(--copper);text-decoration:underline}
 .fine{margin-top:3rem;font-size:.85rem;color:var(--muted)}
@@ -349,3 +349,6 @@ footer{background:var(--bone);padding:clamp(3.5rem,7vw,6rem) 0 7rem;border-top:1
 .bldg img{width:100%;height:auto;display:block;border-radius:3px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 .bldg figcaption{margin-top:.7rem;color:#BFB2A5;font-size:.9rem}
 .bldg figcaption span{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-top:.2rem}
+
+/* tap-target padding without layout shift */
+.crumbs a,.sig-card .more{display:inline-block;padding-block:.7rem;margin-block:-.7rem}

@@ -90,7 +90,7 @@
   if (mbar && !mbar.querySelector('.mbar-ask')) {
     var mb = document.createElement('button'); mb.type = 'button'; mb.className = 'mbar-ask'; mb.setAttribute('aria-haspopup', 'dialog');
     mb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke-linejoin="round"/></svg>' + (ES ? 'Dudas' : 'Ask');
-    mb.setAttribute('aria-label', T.open);
+    mb.setAttribute('aria-label', ES ? 'Dudas: pregúntenos' : T.open);
     mb.onclick = open; mbar.appendChild(mb);
   }
   btn.onclick = open; box.querySelector('.cq-x').onclick = close;
