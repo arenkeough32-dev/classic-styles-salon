@@ -26,7 +26,7 @@
 <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="image" href="/img/wedding-braid-mirror-800.webp" imagesrcset="/img/wedding-braid-mirror-480.webp 480w, /img/wedding-braid-mirror-800.webp 800w, /img/wedding-braid-mirror.webp 1200w" imagesizes="(max-width: 860px) 100vw, 34vw" fetchpriority="high">
+<link rel="preload" as="image" href="/media/opening-poster-1920.webp" imagesrcset="/media/opening-poster-960.webp 960w, /media/opening-poster-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -53,6 +53,7 @@
 <link rel="stylesheet" href="/assets/cs.css?v=4">
 <link rel="stylesheet" href="/assets/story.css?v=3">
 <link rel="stylesheet" href="/assets/v7.css?v=2">
+<link rel="stylesheet" href="/assets/cinema.css?v=1">
 <link rel="alternate" hreflang="en" href="https://classicstylesdayspas.com/">
 <link rel="alternate" hreflang="es" href="https://classicstylesdayspas.com/es/">
 <link rel="alternate" hreflang="x-default" href="https://classicstylesdayspas.com/">
@@ -75,8 +76,13 @@
 </nav>
 </header>
 <main id="main">
-<section class="dk h7" aria-labelledby="h1">
-<video class="bgvid" id="heroSilk" data-src="/assets/silk-loop.mp4" poster="/img/silk-poster-640.webp" muted loop playsinline preload="none" aria-hidden="true"></video><script>(function(){var v=document.getElementById("heroSilk");var c=navigator.connection;if(!v||matchMedia("(prefers-reduced-motion: reduce), (max-width: 860px)").matches||(c&&c.saveData))return;function go(){v.src=v.getAttribute("data-src");var p=v.play();if(p&&p.catch)p.catch(function(){});}addEventListener("load",function(){("requestIdleCallback" in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200);});})();</script>
+<section class="dk h7 cin" id="top" aria-labelledby="h1" data-cin="hero">
+<div class="cin-media" aria-hidden="true">
+<img class="cin-poster" src="/media/opening-poster-1920.webp" srcset="/media/opening-poster-960.webp 960w, /media/opening-poster-1920.webp 1920w" sizes="100vw" width="1760" height="1176" fetchpriority="high" decoding="async" alt="">
+<div class="cin-blur"></div>
+<video class="cin-video" data-clip="opening" muted playsinline preload="none" tabindex="-1"></video>
+</div>
+<div class="cin-scrim" aria-hidden="true"></div>
 <div class="wrap h7-grid">
 <div class="h7-copy">
 <p class="h7-mast" aria-hidden="true"><span>Classic</span><span>Styles</span></p>
@@ -87,11 +93,8 @@
 <a class="rating" href="https://www.google.com/maps/place/Classic+Styles/@28.2190077,-82.7228289,17z/data=!3m1!4b1!4m6!3m5!1s0x88c291e8916f6a6b:0xa63c885e7e4ea1c5!8m2!3d28.2190077!4d-82.7228289!16s%2Fg%2F11bx1r3l72" target="_blank" rel="noopener"><b>5.0</b><span class="stars" aria-hidden="true">★★★★★</span><span>49 Google reviews, every one five stars</span></a>
 <ul class="h7-trust"><li><b>35+</b>years on Grand Blvd</li><li><b>41</b>years: Debbie</li><li><b>33</b>years: Kelly, nails</li></ul>
 </div>
-<figure class="h7-art">
-<div class="ring7"><div class="arch7"><img class="kb" src="/img/wedding-braid-mirror-800.webp" srcset="/img/wedding-braid-mirror-480.webp 480w, /img/wedding-braid-mirror-800.webp 800w, /img/wedding-braid-mirror.webp 1200w" sizes="(max-width: 860px) 100vw, 34vw" alt="Finished pearl and flower bridal braid by Tammy, seen in front of a gold arched mirror" width="1200" height="1751" fetchpriority="high" decoding="async"></div></div>
-<figcaption>Bridal braid by Tammy</figcaption>
-</figure>
 </div>
+<button class="cin-pause" type="button" hidden>Pause video</button>
 </section>
 
 <section class="es7" id="espanol" lang="es" aria-labelledby="es-h">
@@ -125,6 +128,8 @@
 <script type="application/json" id="team-work">{"tammy": {"name": "Tammy", "role": "The Tolliver wedding, start to finish. Photos: Arianna Cromie Photography", "book": "sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20a%20consultation.", "bookLabel": "Text to book with Tammy", "items": [{"src": "/img/wedding-braid-start-800.webp", "srcset": "/img/wedding-braid-start-480.webp 480w, /img/wedding-braid-start-800.webp 800w, /img/wedding-braid-start.webp 1200w", "alt": "The braid begins, with pink flowers and pearls", "cap": "The braid begins, with pink flowers and pearls"}, {"src": "/img/wedding-braid-pins-800.webp", "srcset": "/img/wedding-braid-pins-480.webp 480w, /img/wedding-braid-pins-800.webp 800w, /img/wedding-braid-pins.webp 1200w", "alt": "Pearls, pinned one by one", "cap": "Pearls, pinned one by one"}, {"src": "/img/wedding-braid-mirror-800.webp", "srcset": "/img/wedding-braid-mirror-480.webp 480w, /img/wedding-braid-mirror-800.webp 800w, /img/wedding-braid-mirror.webp 1200w", "alt": "The finished braid", "cap": "The finished braid"}, {"src": "/img/wedding-reveal-800.webp", "srcset": "/img/wedding-reveal-480.webp 480w, /img/wedding-reveal-800.webp 800w, /img/wedding-reveal.webp 1200w", "alt": "The reveal", "cap": "The reveal"}]}, "debbie": {"name": "Debbie", "role": "Stylist, 41 years", "book": "tel:+17275347972", "bookLabel": "Call Debbie", "items": [{"src": "/img/work/debbie-short-blonde.webp", "srcset": "/img/work/debbie-short-blonde-480.webp 480w, /img/work/debbie-short-blonde-800.webp 800w, /img/work/debbie-short-blonde.webp 960w", "alt": "Short, lifted blonde cut with soft fringe by Debbie", "cap": "Short and lifted"}, {"src": "/img/work/debbie-bob.webp", "srcset": "/img/work/debbie-bob-480.webp 480w, /img/work/debbie-bob-800.webp 800w, /img/work/debbie-bob.webp 960w", "alt": "Rounded blonde bob seen from behind, cut by Debbie", "cap": "Classic rounded bob"}, {"src": "/img/work/debbie-textured-crop.webp", "srcset": "/img/work/debbie-textured-crop-480.webp 480w, /img/work/debbie-textured-crop-800.webp 800w, /img/work/debbie-textured-crop.webp 960w", "alt": "Short textured blonde haircut from the side by Debbie", "cap": "Soft textured crop"}, {"src": "/img/work/debbie-ash-pixie.webp", "srcset": "/img/work/debbie-ash-pixie-480.webp 480w, /img/work/debbie-ash-pixie-800.webp 800w, /img/work/debbie-ash-pixie.webp 960w", "alt": "Ash blonde tapered pixie cut by Debbie", "cap": "Ash blonde pixie"}, {"src": "/img/work/debbie-layered-crop.webp", "srcset": "/img/work/debbie-layered-crop-480.webp 480w, /img/work/debbie-layered-crop-800.webp 800w, /img/work/debbie-layered-crop.webp 960w", "alt": "Layered short haircut seen from behind by Debbie", "cap": "Layered short cut"}]}, "natalie": {"name": "Natalie", "role": "Stylist", "book": "sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20a%20consultation.", "bookLabel": "Text to book with Natalie", "items": [{"src": "/img/natalie-before-after-color.webp", "srcset": "/img/natalie-before-after-color-480.webp 480w, /img/natalie-before-after-color.webp 800w", "alt": "Before and after: brassy orange hair corrected to dimensional blonde highlights by Natalie", "cap": "Color correction, before and after"}, {"src": "/img/natalie-bridal-updo.webp", "srcset": "/img/natalie-bridal-updo-480.webp 480w, /img/natalie-bridal-updo-640.webp 640w, /img/natalie-bridal-updo.webp 800w", "alt": "Braided bridal updo with pearl and crystal pins by Natalie", "cap": "Bridal updo"}, {"src": "/img/natalie-vivid-color.webp", "srcset": "/img/natalie-vivid-color-480.webp 480w, /img/natalie-vivid-color.webp 800w", "alt": "Vivid rainbow hair color by Natalie", "cap": "Vivid color"}]}, "aury": {"name": "Aury", "role": "Stylist, habla español", "book": "tel:+17274874475", "bookLabel": "Call and ask for Aury", "items": [{"src": "/img/work/aury-blonde-before-after.webp", "srcset": "/img/work/aury-blonde-before-after-480.webp 480w, /img/work/aury-blonde-before-after-800.webp 800w, /img/work/aury-blonde-before-after.webp 1440w", "alt": "Before and after: brassy brown hair lifted to a smooth, bright blonde bob by Aury", "cap": "Brassy to bright blonde, before and after"}]}, "kelly": {"name": "Kelly", "role": "Nail technician, 33 years", "book": "tel:+19705909123", "bookLabel": "Call Kelly", "items": [{"src": "/img/work/kelly-burgundy-nails.webp", "srcset": "/img/work/kelly-burgundy-nails-480.webp 480w, /img/work/kelly-burgundy-nails-800.webp 800w, /img/work/kelly-burgundy-nails.webp 960w", "alt": "Almond nails in burgundy cat-eye polish with silver web art by Kelly", "cap": "Burgundy cat-eye nails"}, {"src": "/img/work/kelly-chrome-nails.webp", "srcset": "/img/work/kelly-chrome-nails-480.webp 480w, /img/work/kelly-chrome-nails-800.webp 800w, /img/work/kelly-chrome-nails.webp 960w", "alt": "Almond nails with teal and silver chrome swirls by Kelly", "cap": "Teal chrome swirls"}]}}</script>
 </section>
 
+<div class="strip" data-cin="strip"><img src="/media/broll-1-poster.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><video data-clip="broll-1" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
+
 <section class="sec sec-paper" id="services">
 <div class="wrap menu">
 <div class="menu-aside">
@@ -150,6 +155,8 @@
 </div>
 </div>
 </section>
+
+<div class="strip" data-cin="strip"><img src="/media/broll-2-poster.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><video data-clip="broll-2" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
 
 <section class="dk glow wed" id="wedding" aria-labelledby="wed-h">
 <div class="wrap wed-grid">
@@ -193,6 +200,8 @@
 </div>
 </section>
 
+<div class="strip" data-cin="strip"><img src="/media/broll-3-poster.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><video data-clip="broll-3" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
+
 <section class="sec" id="find" aria-labelledby="find-h">
 <div class="wrap">
 <div class="finder" id="finder">
@@ -207,6 +216,8 @@
 </div>
 </div>
 </section>
+
+<div class="strip strip-scrub" data-cin="strip" data-scrub><img src="/media/broll-5-poster.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><video data-clip="broll-5" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
 
 <section class="band on-dark" aria-label="Free photo quote">
 <div class="wrap">
@@ -256,6 +267,27 @@
 </div>
 </div>
 </section>
+<section class="dk close7" id="closing" aria-labelledby="close-h" data-cin="close">
+<div class="close7-stage">
+<div class="cin-media" aria-hidden="true">
+<img class="cin-poster" src="/media/closing-poster-1920.webp" srcset="/media/closing-poster-960.webp 960w, /media/closing-poster-1920.webp 1920w" sizes="100vw" width="1760" height="1176" loading="lazy" decoding="async" alt="">
+<video class="cin-video" data-clip="closing" muted playsinline preload="none" tabindex="-1"></video>
+</div>
+<div class="cin-scrim" aria-hidden="true"></div>
+<div class="close7-veil" aria-hidden="true"></div>
+<div class="wrap close7-copy">
+<h2 id="close-h">See you on Grand Blvd.</h2>
+<p class="close7-lede">Look for the white 1926 First State Bank building on the corner of Grand Blvd and Olympia St. Parking is on the side.</p>
+<div class="close7-info">
+<address>Classic Styles Salon &amp; Day Spa<br>4116 Grand Blvd, Unit 1<br>New Port Richey, FL 34652</address>
+<ul class="close7-hours"><li><span>Tuesday to Friday</span><span>9:00 am to 5:00 pm</span></li><li><span>Saturday</span><span>9:00 am to 3:00 pm</span></li><li><span>Sunday and Monday</span><span>Closed</span></li></ul>
+</div>
+<div class="cta-row"><a class="btn btn-solid" href="tel:+17274874475">Call (727) 487-4475</a><a class="btn btn-outline" href="sms:+17274874475?&body=Hi%20Classic%20Styles!%20I%27d%20like%20to%20book%20an%20appointment.">Text to book</a></div>
+<p class="close7-cap">Watercolor illustration of our 1926 building</p>
+</div>
+<button class="cin-pause" type="button" hidden>Pause video</button>
+</div>
+</section>
 </main>
 <footer>
 <div class="wrap">
@@ -276,6 +308,7 @@
 <script src="/assets/vendor/lenis.min.js" defer></script>
 <script src="/assets/story.js?v=3" defer></script>
 <script src="/assets/v7.js?v=1" defer></script>
+<script src="/assets/cinema.js?v=1" defer></script>
 <script>(function(){var mv=document.querySelector('model-viewer.plaque');if(!mv)return;var go=function(){if(go.done)return;go.done=1;var s=document.createElement('script');s.type='module';s.src='https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';document.head.appendChild(s);};if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();io.disconnect();}},{rootMargin:'800px 0px'});io.observe(mv);}else{go();}})();</script>
 <script>document.querySelectorAll('model-viewer.plaque').forEach(function(mv){mv.addEventListener('load',function(){mv.model.materials.forEach(function(m){var p=m.pbrMetallicRoughness;p.setBaseColorFactor([0.70,0.40,0.22,1]);p.setMetallicFactor(1);p.setRoughnessFactor(0.3);});});if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)mv.removeAttribute('auto-rotate');});</script>
 </body>
