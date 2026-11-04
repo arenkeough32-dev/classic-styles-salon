@@ -2,7 +2,7 @@
    No AI service, no cookies, no data leaves the page. */
 (function(){
   var ES = (document.documentElement.lang || '').indexOf('es') === 0;
-  var AI_ENDPOINT = ''; // set to the Cloudflare Worker URL to switch on AI answers
+  var AI_ENDPOINT = ''; // set to the chat endpoint URL
   var hist = [];
   var TEL = 'tel:+17274874475';
   var SMS = 'sms:+17274874475?&body=' + encodeURIComponent(ES ? '¡Hola, Classic Styles! Quisiera hacer una cita.' : "Hi Classic Styles! I'd like to book an appointment.");
@@ -33,7 +33,7 @@
     [/book|schedule|reserve/i,'Booking is by call or text, and a real person answers. Most appointments are confirmed in under a minute.','How do I book?'],
     [/park/i,'Parking is on the side of the building at 4116 Grand Blvd, and you can come in the front or back door (Unit 1).','Parking?'],
     [/pay|card|cash|apple|google pay|venmo/i,'All major cards, Apple Pay, Google Pay, contactless and cash.','Payment?'],
-    [/perm|curl|wave/i,'Yes, we still do classic perms, body waves and spiral curls; it is a specialty after 35 years. Most perms last 3 to 6 months.','Perms?'],
+    [/perm|curl|wave/i,'Yes, we still do classic perms, body waves and spiral curls; it is a specialty, with 35+ years of experience behind it. Most perms last 3 to 6 months.','Perms?'],
     [/nail|mani|pedi|gel/i,'Kelly does manicures and pedicures. Call or text to book with her.','Nails?'],
     [/bride|bridal|wedding|prom|updo|event/i,'We do bridal and special-occasion updos, and whole wedding parties are welcome. Book groups a few weeks ahead.','Weddings?'],
     [/kid|child|toddler|son|daughter/i,'Kids are very welcome: patient stylists, first haircuts and kids’ cuts from $25.','Kids?'],
