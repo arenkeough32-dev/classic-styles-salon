@@ -2,8 +2,8 @@
 (function(){
   /* ---- Aury's phone: ONE value to change. Leave '' to keep using the salon line (727) 487-4475.
      When Aury has a direct number, put it here as digits with country code, e.g. '+17275551234'. ---- */
-  var AURY_PHONE = '';
-  var AURY_DISPLAY = ''; // e.g. '(727) 555-1234'
+  var AURY_PHONE = '+17273893538';
+  var AURY_DISPLAY = '(727) 389-3538';
 
   if (AURY_PHONE) {
     document.querySelectorAll('[data-aury]').forEach(function(a){
