@@ -1,0 +1,101 @@
+/* Classic Styles cinema layer: full-bleed opening and closing scenes built on the 1926 watercolor.
+   Loaded after v7.css. Scroll effects use transform and opacity only. The opening/closing reveals run longer
+   than the usual 300ms UI tokens on purpose (hero choreography, once per page). */
+
+/* ---------- shared media stack ---------- */
+.cin-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--night);transform-origin:62% 52%;will-change:transform,opacity}
+.cin-poster,.cin-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;display:block}
+.cin-video{opacity:0;transition:opacity .3s ease-out;pointer-events:none}
+.cin-video.on{opacity:1}
+/* blur is baked into a static layer; scroll only changes its opacity (no per-frame filter cost) */
+.cin-blur{position:absolute;inset:-6%;background:url(/media/opening-poster-960.webp) 62% 50%/cover;filter:blur(22px) saturate(.9);opacity:0;will-change:opacity}
+.cin-scrim{position:absolute;inset:0;z-index:1;pointer-events:none}
+
+.cin-pause{position:absolute;right:var(--gut);top:1.1rem;z-index:5;min-height:2.75rem;padding:0 1.1rem;border:1px solid rgba(243,236,226,.5);border-radius:999px;background:rgba(23,17,13,.72);color:var(--cream);font:500 .9rem/1 var(--sans);letter-spacing:.02em;cursor:pointer;transition:background .2s,color .2s}
+.cin-pause:hover{background:var(--cream);color:var(--ink)}
+.cin-pause:focus-visible{outline:2px solid var(--copper-lt);outline-offset:3px}
+.cin-pause[hidden]{display:none}
+
+/* ---------- opening ---------- */
+.h7.cin{overflow:hidden;padding:0}
+.h7.cin::before{display:none}
+.h7.cin .cin-scrim{background:
+  linear-gradient(90deg,rgba(23,17,13,.95) 0,rgba(23,17,13,.9) 42%,rgba(23,17,13,.66) 66%,rgba(23,17,13,.12) 100%),
+  linear-gradient(180deg,rgba(23,17,13,0) 62%,var(--night) 100%)}
+.h7.cin .h7-grid{position:relative;z-index:2;display:flex;align-items:center;min-height:calc(100svh - 4.6rem);padding-top:clamp(2rem,4vw,4rem);padding-bottom:clamp(4.5rem,8vw,6.5rem)}
+.h7.cin .h7-copy{max-width:41rem}
+.h7.cin .h7-mast{font-size:clamp(4rem,8vw,8rem);margin-bottom:1.8rem}
+
+@media (prefers-reduced-motion:no-preference){
+  /* staged reveal: wordmark, then eyebrow, headline, line, actions, proof */
+  .js .h7.cin .h7-copy>*{animation:cin-in 1.3s cubic-bezier(.16,1,.3,1) both}
+  .js .h7.cin .h7-copy>.h7-mast{animation-duration:1.8s;animation-delay:.15s}
+  .js .h7.cin .h7-copy>.h7-eyebrow{animation-delay:.55s}
+  .js .h7.cin .h7-copy>h1{animation-delay:.75s}
+  .js .h7.cin .h7-copy>.h7-sub{animation-delay:1s}
+  .js .h7.cin .h7-copy>.cta-row{animation-delay:1.2s}
+  .js .h7.cin .h7-copy>.rating{animation-delay:1.35s}
+  .js .h7.cin .h7-copy>.h7-trust{animation-delay:1.5s}
+  @keyframes cin-in{from{transform:translate3d(0,26px,0);opacity:.001}to{transform:none;opacity:1}}
+}
+
+@media (max-width:860px){
+  .h7.cin .cin-poster,.h7.cin .cin-video,.h7.cin .cin-blur{object-position:40% 50%;background-position:40% 50%}
+  .h7.cin .cin-scrim{background:linear-gradient(180deg,rgba(23,17,13,.15) 0,rgba(23,17,13,.5) 16%,rgba(23,17,13,.9) 34%,var(--night) 88%)}
+  .h7.cin .h7-grid{flex-direction:column;justify-content:flex-end;align-items:stretch;min-height:calc(100svh - 4.6rem);padding-top:0;padding-bottom:5.2rem}
+  .h7.cin .h7-copy{margin-top:0;max-width:none}
+  .h7.cin .h7-eyebrow{font-size:.74rem}
+}
+
+/* ---------- closing ---------- */
+.close7{position:relative;background:var(--night);color:var(--cream)}
+.close7-stage{position:relative;min-height:min(90svh,60rem);overflow:hidden;display:flex;align-items:center;isolation:isolate}
+.close7 .cin-scrim{background:
+  linear-gradient(90deg,rgba(23,17,13,.94) 0,rgba(23,17,13,.86) 42%,rgba(23,17,13,.5) 66%,rgba(23,17,13,.1) 100%),
+  linear-gradient(180deg,var(--night) 0,rgba(23,17,13,0) 22%,rgba(23,17,13,0) 70%,var(--night) 100%)}
+.close7-veil{position:absolute;inset:0;z-index:3;background:var(--night);opacity:0;pointer-events:none;will-change:opacity}
+.close7-copy{position:relative;z-index:4;padding-top:clamp(4rem,9vw,7rem);padding-bottom:clamp(4rem,9vw,7rem)}
+.close7 h2{font:400 clamp(2.7rem,6vw,5.4rem)/.98 var(--serif);letter-spacing:-.03em;color:var(--cream);margin:0 0 1.3rem;max-width:7.5em}
+.close7-lede{max-width:30em;font-size:1.1rem;color:var(--cream-2)!important;margin:0 0 1.8rem}
+.close7-info{display:grid;grid-template-columns:auto auto;gap:1.2rem 3rem;justify-content:start;align-items:start;margin:0 0 2rem}
+.close7 address{font-style:normal;line-height:1.75;color:var(--cream)}
+.close7-hours{list-style:none;margin:0;padding:0;border-top:1px solid rgba(243,236,226,.28)}
+.close7-hours li{display:flex;justify-content:space-between;gap:2rem;padding:.5rem 0;border-bottom:1px solid rgba(243,236,226,.16);font-size:.98rem;color:var(--cream)}
+.close7 .cta-row{margin:0}
+.close7-cap{display:table;margin:1.6rem 0 0;font:italic 400 .95rem/1.4 var(--serif);color:#B9AB9B!important}
+@media (max-width:860px){
+  .close7-stage{align-items:flex-end}
+  .close7 .cin-scrim{background:linear-gradient(180deg,var(--night) 0,rgba(23,17,13,.72) 14%,rgba(23,17,13,.92) 34%,var(--night) 100%)}
+  .close7-info{grid-template-columns:1fr}
+  .close7-copy{padding-bottom:6.5rem}
+  .close7 .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+  .close7 .cta-row .btn{padding:0 .6rem;font-size:.95rem}
+}
+
+/* sticky scroll reveal (JS adds .cin-on when motion is allowed) */
+@media (prefers-reduced-motion:no-preference){
+  .close7.cin-on{height:230svh}
+  .close7.cin-on .close7-stage{position:sticky;top:0;height:100svh;min-height:0}
+  .close7.cin-on .close7-veil{opacity:1}
+  .close7.cin-on .close7-copy{opacity:0;transform:translate3d(0,28px,0);will-change:transform,opacity}
+}
+@media (prefers-reduced-motion:reduce){
+  .cin-video{display:none}
+  .cin-pause{display:none}
+  .cin-media{transform:none!important;opacity:1!important}
+  .cin-blur{display:none}
+}
+
+.h7.cin .h7-copy,.close7-copy{text-shadow:0 1px 16px rgba(23,17,13,.6)}
+.h7.cin .btn,.close7 .btn{text-shadow:none}
+
+/* ---------- motion strips: mood visuals between sections (decorative, never captioned) ---------- */
+.strip{position:relative;height:clamp(15rem,42vw,30rem);overflow:hidden;background:var(--night);isolation:isolate}
+.strip-scrub{height:min(78svh,44rem)}
+.strip img,.strip video{position:absolute;inset:-4% 0;width:100%;height:108%;object-fit:cover;display:block}
+.strip video{opacity:0;transition:opacity .3s ease-out}
+.strip video.on{opacity:1}
+.strip::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(23,17,13,.55) 0,rgba(23,17,13,.08) 30%,rgba(23,17,13,.08) 70%,rgba(23,17,13,.55) 100%)}
+.strip .cin-pause{z-index:3;top:auto;bottom:1rem;min-height:2.75rem}
+@media (prefers-reduced-motion:no-preference){.strip img,.strip video{will-change:transform}}
+@media (prefers-reduced-motion:reduce){.strip video,.strip .cin-pause{display:none}.strip img,.strip video{transform:none!important}}
