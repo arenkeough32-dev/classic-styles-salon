@@ -34,7 +34,20 @@
     if (!o.scrub) v.loop = true;
     v.preload = 'auto';
     v.addEventListener('playing', function () { v.classList.add('on'); });
-    v.addEventListener('loadeddata', function () { o.ready = true; if (o.scrub) { v.classList.add('on'); queue(); } });
+    var markReady = function () {
+      if (o.ready || !(v.readyState >= 2 && v.duration > 0)) return;
+      o.ready = true;
+      if (o.scrub) { v.classList.add('on'); queue(); }
+    };
+    // several events: browsers that ignore preload=auto (iOS, data-saver) may never fire loadeddata on their own
+    ['loadedmetadata', 'loadeddata', 'canplay'].forEach(function (ev) { v.addEventListener(ev, markReady); });
+    if (o.scrub) {
+      // nudge the decoder: a muted play/pause forces the first frames to load where preload is ignored
+      v.addEventListener('loadedmetadata', function () {
+        if (v.readyState >= 2) return;
+        var p = v.play(); if (p && p.then) p.then(function () { v.pause(); }).catch(function () {});
+      }, { once: true });
+    }
     v.addEventListener('error', function () { v.style.display = 'none'; });
     v.src = srcFor(v);
     v.load();
@@ -123,6 +136,7 @@
     var ioR = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { (tgt.get(e.target) || []).forEach(function (t) { t.classList.add('in'); }); ioR.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    setTimeout(function () { $('.r2:not(.in),.u2:not(.in)').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < vh * 1.1 && r.bottom > -vh) el.classList.add('in'); }); }, 2500);
     $('.r2,.u2').forEach(function (el) {
       var o = el.classList.contains('u2') ? el.parentElement : el;
       if (!tgt.has(o)) { tgt.set(o, []); ioR.observe(o); }
@@ -177,6 +191,8 @@
   function frame() {
     ticking = false;
     var y = scrollY, again = false;
+    var tnow = performance.now(), dt = Math.min(100, tnow - (frame.t || tnow - 16)); frame.t = tnow;
+    var lerpK = 1 - Math.exp(-dt / 70);
     if (!mo) return;
 
     if (hero && heroMedia && y < vh * 1.4) {
@@ -202,10 +218,11 @@
       var v = s.o && s.o.el;
       if (v && s.o.ready && v.duration) {
         var target = p * (v.duration - 0.06);
-        s.o.cur += (target - s.o.cur) * 0.22;
+        s.o.cur += (target - s.o.cur) * lerpK; // time-based ease: same feel at 30 or 120 fps
         if (Math.abs(s.o.cur - target) < 0.012) s.o.cur = target; else again = true;
         if (Math.abs(v.currentTime - s.o.cur) > 0.02) v.currentTime = s.o.cur;
       } else if (v && s.o && s.o.near && !s.o.attached) attach(s.o);
+      else if (v && s.o && s.o.attached && !s.o.ready) { if (v.readyState >= 2 && v.duration > 0) { s.o.ready = true; v.classList.add('on'); again = true; } else if (!s.o.kicked && v.readyState === 0) { s.o.kicked = true; v.load(); } }
     });
 
     // horizontal signature reel (desktop): vertical scroll drives sideways travel with 3D card tilt
@@ -217,7 +234,7 @@
         hsTrack.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,0,0)';
         hsCards.forEach(function (c) {
           var cx = c.offsetLeft + c.offsetWidth / 2 + tx, d = clamp((cx - hsView.clientWidth / 2) / (hsView.clientWidth / 2), -1.2, 1.2);
-          c.style.transform = 'rotateY(' + (-d * 15).toFixed(2) + 'deg) translateZ(' + (-Math.abs(d) * 60).toFixed(1) + 'px) scale(' + (1 - Math.abs(d) * 0.04).toFixed(3) + ')';
+          c.style.transform = 'perspective(1400px) rotateY(' + (-d * 15).toFixed(2) + 'deg) translateZ(' + (-Math.abs(d) * 60).toFixed(1) + 'px) scale(' + (1 - Math.abs(d) * 0.04).toFixed(3) + ')';
           var im = c.querySelector('.ph img'); if (im) im.style.transform = 'translate3d(' + (d * -5).toFixed(2) + '%,0,0)';
         });
       }
@@ -250,6 +267,9 @@
   addEventListener('scroll', queue, { passive: true });
   addEventListener('resize', function () { layout(); queue(); });
   addEventListener('load', function () { layout(); queue(); });
+  addEventListener('orientationchange', function () { setTimeout(function () { layout(); queue(); }, 250); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layout(); queue(); });
+  if ('ResizeObserver' in window && hsTrack) new ResizeObserver(function () { layout(); queue(); }).observe(hsTrack);
   layout(); queue();
 
   /* ================= phone ring on swipe reels (replaces the old library-driven version) ================= */
@@ -265,7 +285,7 @@
         var c = rail.scrollLeft + rail.clientWidth / 2;
         items.forEach(function (f) {
           var m = f.offsetLeft + f.offsetWidth / 2, d = clamp((m - c) / f.offsetWidth, -1, 1);
-          f.style.transform = 'rotateY(' + (-d * 28).toFixed(1) + 'deg) translateZ(' + (-Math.abs(d) * 70).toFixed(0) + 'px) scale(' + (1 - Math.abs(d) * 0.07).toFixed(3) + ')';
+          f.style.transform = 'perspective(1000px) rotateY(' + (-d * 28).toFixed(1) + 'deg) translateZ(' + (-Math.abs(d) * 70).toFixed(0) + 'px) scale(' + (1 - Math.abs(d) * 0.07).toFixed(3) + ')';
         });
       };
       rail.addEventListener('scroll', function () { if (!t) t = requestAnimationFrame(upd); }, { passive: true });
