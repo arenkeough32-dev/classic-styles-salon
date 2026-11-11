@@ -18,6 +18,7 @@
   /* ================= video manager ================= */
   var MAXP = 2, userPaused = false, vids = [];
   $('video.mv').forEach(function (el) {
+    if (small && el.hasAttribute('data-nosm')) { el.remove(); return; } // phones keep the sharp still
     vids.push({ el: el, scrub: el.classList.contains('scrub'), inView: false, near: false,
       gate: !el.hasAttribute('data-gate'), attached: false, ready: false, cur: 0 });
   });

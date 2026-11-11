@@ -26,8 +26,8 @@
 <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="image" href="/media/tower-poster.webp" media="(max-width: 860px)" fetchpriority="high">
-<link rel="preload" as="image" href="/media/opening-poster-1920.webp" imagesrcset="/media/opening-poster-960.webp 960w, /media/opening-poster-1920.webp 1920w" imagesizes="100vw" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preload" as="image" href="/media/hero-phone-882.webp" imagesrcset="/media/hero-phone-600.webp 600w, /media/hero-phone-882.webp 882w" imagesizes="100vw" media="(max-width: 860px) and (orientation: portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="/media/opening-poster-1920.webp" imagesrcset="/media/opening-poster-960.webp 960w, /media/opening-poster-1920.webp 1920w" imagesizes="100vw" media="(min-width: 861px), (orientation: landscape)" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -54,7 +54,7 @@
 <link rel="stylesheet" href="/assets/cs.css?v=4">
 <link rel="stylesheet" href="/assets/story.css?v=3">
 <link rel="stylesheet" href="/assets/v7.css?v=3">
-<link rel="stylesheet" href="/assets/cs2.css?v=2">
+<link rel="stylesheet" href="/assets/cs2.css?v=3">
 <link rel="stylesheet" href="/assets/depth.css?v=1">
 <link rel="alternate" hreflang="en" href="https://classicstylesdayspas.com/">
 <link rel="alternate" hreflang="es" href="https://classicstylesdayspas.com/es/">
@@ -81,8 +81,8 @@
 <main id="main">
 <section class="hero2 dk" id="top" aria-labelledby="h1" data-hero>
 <div class="hero2-media" aria-hidden="true" data-par-hero>
-<picture><source media="(max-width: 860px)" srcset="/media/tower-poster.webp"><img class="mv-poster" src="/media/opening-poster-1920.webp" srcset="/media/opening-poster-960.webp 960w, /media/opening-poster-1920.webp 1920w" sizes="100vw" width="1760" height="1176" fetchpriority="high" decoding="async" alt=""></picture>
-<video class="mv" data-hero-video data-s="/media/opening" data-wd="1920" data-wm="960" data-sm="/media/tower" data-wsm="540" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+<picture><source media="(max-width: 860px) and (orientation: portrait)" srcset="/media/hero-phone-600.webp 600w, /media/hero-phone-882.webp 882w" sizes="100vw"><img class="mv-poster" src="/media/opening-poster-1920.webp" srcset="/media/opening-poster-960.webp 960w, /media/opening-poster-1920.webp 1920w" sizes="100vw" width="1760" height="1176" fetchpriority="high" decoding="async" alt=""></picture>
+<video class="mv" data-hero-video data-nosm data-s="/media/opening" data-wd="1920" data-wm="960" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
 </div>
 <div class="hero2-shade" aria-hidden="true"></div>
 <div class="wrap hero2-copy"><div class="hero2-panel">
@@ -116,6 +116,8 @@
 <li><b>25</b><span>years on Grand Blvd</span></li>
 <li><a href="https://www.google.com/maps/place/Classic+Styles/@28.2190077,-82.7228289,17z/data=!3m1!4b1!4m6!3m5!1s0x88c291e8916f6a6b:0xa63c885e7e4ea1c5!8m2!3d28.2190077!4d-82.7228289!16s%2Fg%2F11bx1r3l72" target="_blank" rel="noopener"><b>5.0</b><span><i class="stars" aria-hidden="true">★★★★★</i> 52 Google reviews</span></a></li>
 <li><a href="#espanol" lang="es"><b>Hablamos español</b><span lang="en">Ask for Aury</span></a></li>
+<li><a href="#visit"><b>Tue–Sat</b><span>Tue–Fri 9–5, Sat 9–3</span></a></li>
+<li><a href="#services"><b>From $25</b><span>Cuts from $25, color from $60</span></a></li>
 </ul>
 </section>
 
@@ -345,6 +347,6 @@
 <script src="/assets/cs.js" defer></script>
 <script src="/assets/concierge.js?v=2" defer></script><script src="/assets/track.js" defer></script>
 <script src="/assets/v7.js?v=1" defer></script>
-<script src="/assets/cs2.js?v=2" defer></script>
+<script src="/assets/cs2.js?v=3" defer></script>
 </body>
 </html>

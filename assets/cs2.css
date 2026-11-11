@@ -63,11 +63,11 @@ video.mv.on{opacity:1}
 @media (prefers-reduced-motion:no-preference){
   .mo .hero2-media{animation:push 2.8s var(--cine) both}
   @keyframes push{from{transform:scale(1.14)}to{transform:scale(1)}}
-  .mo .hero2-panel>*{animation:cin-up 1.3s var(--cine) both}
-  .mo .hero2-panel>.hero2-eyebrow{animation-delay:.5s}
-  .mo .hero2-panel>h1{animation-delay:.7s}
-  .mo .hero2-panel>.hero2-sub{animation-delay:1s}
-  .mo .hero2-panel>.cta-row{animation-delay:1.2s}
+  .mo .hero2-panel>*{animation:cin-up .6s var(--cine) both}
+  .mo .hero2-panel>.hero2-eyebrow{animation-delay:0s}
+  .mo .hero2-panel>h1{animation-delay:.06s}
+  .mo .hero2-panel>.hero2-sub{animation-delay:.12s}
+  .mo .hero2-panel>.cta-row{animation-delay:.18s}
   @keyframes cin-up{from{transform:translate3d(0,28px,0);opacity:.001}to{transform:none;opacity:1}}
   .mo .hero2-cue i{animation:cue 2.4s var(--ease) 4}
   @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -264,3 +264,6 @@ html:not(.mo) .svc-layer:first-child{opacity:1;transform:none}
 html:not(.mo) .svc-side{position:static}
 .close2 .close7-hours li span{white-space:nowrap}
 .door .film-tag,.orbit .film-tag,.close2 .film-tag{left:auto;right:var(--gut)}
+/* at-a-glance strip: 5 items (hours and prices added 11 Nov) */
+@media(min-width:701px){.trust-row{grid-template-columns:repeat(5,1fr)}.trust-row b{font-size:clamp(1.5rem,2.3vw,2.2rem)}.trust-row li:nth-child(n+4) b{white-space:nowrap}}
+@media(max-width:700px){.trust-row{grid-template-columns:repeat(6,1fr)}.trust-row li{grid-column:span 2}.trust-row li:nth-child(n+4){grid-column:span 3;border-top:1px solid rgba(35,27,22,.14)}.trust-row li:nth-child(4){border-left:0;padding-left:0}}
